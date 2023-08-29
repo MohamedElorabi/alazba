@@ -13,7 +13,18 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        //
+        $properties = Property::all();
+
+        if(count($properties) > 0 )
+        {
+            return response()->json([
+                'data' => $properties
+            ]);
+        }
+        return response()->json([
+            'message' => 'no record found'
+        ]);
+
     }
 
     /**
@@ -40,7 +51,21 @@ class PropertyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $property = Property::find($id);
+        if($property)
+        {
+            return response()->json([
+                'status' => true,
+                'data' => $property,
+            ]);
+
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'ID Not Found.',
+            ]);
+        }
+
     }
 
     /**
@@ -48,7 +73,29 @@ class PropertyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $property = Property::find($id);
+        if($property)
+        {
+            $data = [
+                'name' => $request->name,
+                'address' => $request->address,
+                'floors_count' => $request->floors_count,
+            ];
+
+            $property->update($data);
+
+            return response()->json([
+                'status' => true,
+                'data' => $data,
+                'message' => 'Data Updated Successfully.',
+            ]);
+
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'ID Not Found.',
+            ]);
+        }
     }
 
     /**
@@ -56,6 +103,11 @@ class PropertyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $property = Property::findOrFail($id);
+        $property->delete();
+        return response()->json([
+            'status' => true,
+            'message' => 'Data Deleted Successfully.',
+        ]);
     }
 }
