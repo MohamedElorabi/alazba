@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FlatRequest;
 use App\Models\Flat;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class FlatController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FlatRequest $request)
     {
         $data = Flat::create([
             'property_id' => $request->property_id,
@@ -68,7 +69,7 @@ class FlatController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FlatRequest $request, string $id)
     {
         $flat = Flat::findOrFail($id);
 

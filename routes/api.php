@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // properties
 Route::get('/properties', [PropertyController::class, 'index']);
-Route::post('/property/show/{id}', [PropertyController::class, 'show']);
+Route::get('/property/show/{id}', [PropertyController::class, 'show']);
 Route::post('/property/store', [PropertyController::class, 'store']);
 Route::post('/property/update/{id}', [PropertyController::class, 'update']);
 Route::delete('/property/delete/{id}', [PropertyController::class, 'destroy']);
@@ -36,7 +36,7 @@ Route::delete('/property/delete/{id}', [PropertyController::class, 'destroy']);
 
 // flats
 Route::get('/flats', [FlatController::class, 'index']);
-Route::post('/flat/show/{id}', [FlatController::class, 'show']);
+Route::get('/flat/show/{id}', [FlatController::class, 'show']);
 Route::post('/flat/store', [FlatController::class, 'store']);
 Route::post('/flat/update/{id}', [FlatController::class, 'update']);
 Route::delete('/flat/delete/{id}', [FlatController::class, 'destroy']);
@@ -45,7 +45,7 @@ Route::delete('/flat/delete/{id}', [FlatController::class, 'destroy']);
 
 // users
 Route::get('/users', [UserController::class, 'index']);
-Route::post('/user/show/{id}', [UserController::class, 'show']);
+Route::get('/user/show/{id}', [UserController::class, 'show']);
 Route::post('/user/store', [UserController::class, 'store']);
 Route::post('/user/update/{id}', [UserController::class, 'update']);
 Route::delete('/user/delete/{id}', [UserController::class, 'destroy']);
