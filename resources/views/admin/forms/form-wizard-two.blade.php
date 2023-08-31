@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Step Form Wizard
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -16,7 +16,7 @@
 		<li class="breadcrumb-item">Form Layout</li>
 		<li class="breadcrumb-item active">Step Form Wizard</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<div class="row">
 		  <div class="col-sm-12">
@@ -108,7 +108,7 @@
 		  </div>
 		</div>
 	  </div>
-	
+
 	@push('scripts')
 	<script src="{{asset('assets/js/form-wizard/form-wizard-two.js')}}"></script>
 	@endpush

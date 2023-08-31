@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Table Components
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -16,7 +16,7 @@
 		<li class="breadcrumb-item">Bootstrap Tables</li>
 		<li class="breadcrumb-item active">Table Components</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<!-- Table Row Starts-->
 		<div class="row">
@@ -692,8 +692,8 @@
 			<!-- Switch Row Ends-->
 			<!-- Table Row Ends-->
 		</div>
-	</div>	
-	
+	</div>
+
 	@push('scripts')
 	@endpush
 

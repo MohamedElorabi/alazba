@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Clipboard
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -16,7 +16,7 @@
 		<li class="breadcrumb-item">Form Widgets</li>
 		<li class="breadcrumb-item active">Clipboard</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 col-md-6">
@@ -92,8 +92,8 @@
 				</div>
 			</div>
 		</div>
-	</div>	
-	
+	</div>
+
 	@push('scripts')
 	<script src="{{asset('assets/js/clipboard/clipboard.min.js')}}"></script>
     <script src="{{asset('assets/js/clipboard/clipboard-script.js')}}"></script>

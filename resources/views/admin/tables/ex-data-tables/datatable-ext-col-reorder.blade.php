@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Columns Reorder
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -18,7 +18,7 @@
 		<li class="breadcrumb-item">Extension Data Tables</li>
 		<li class="breadcrumb-item active">Columns Reorder</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 	    <div class="row">
 	        <div class="col-sm-12">
@@ -1508,7 +1508,7 @@
 	        </div>
 	    </div>
 	</div>
-	
+
 	@push('scripts')
 	<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.buttons.min.js')}}"></script>

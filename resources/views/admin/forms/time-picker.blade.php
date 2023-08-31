@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Time Picker
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -17,7 +17,7 @@
 		<li class="breadcrumb-item">Form Controls</li>
         <li class="breadcrumb-item active">Time Picker</li>
 	@endcomponent
-	
+
 	<div class="container-fluid time-picker">
 		<div class="row">
 			<div class="col-md-6">
@@ -86,8 +86,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	@push('scripts')
 	<script src="{{ asset('assets/js/time-picker/jquery-clockpicker.min.js') }}"></script>
     <script src="{{ asset('assets/js/time-picker/highlight.min.js') }}"></script>

@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Checkbox & Radio
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -16,7 +16,7 @@
 		<li class="breadcrumb-item">Form Controls</li>
         <li class="breadcrumb-item active">Checkbox & Radio</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<div class="row">
 		  <div class="col-md-6">
@@ -281,7 +281,7 @@
 		  </div>
 		</div>
 	  </div>
-	
+
 	@push('scripts')
 	@endpush
 

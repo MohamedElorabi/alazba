@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Switch
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')

@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Validation Forms
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -16,7 +16,7 @@
 		<li class="breadcrumb-item">Form Controls</li>
         <li class="breadcrumb-item active">Validation Forms</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12">
@@ -243,8 +243,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	@push('scripts')
 	<script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
 	@endpush

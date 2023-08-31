@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Date Range Picker
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')

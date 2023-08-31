@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Styling Tables
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -16,7 +16,7 @@
 		<li class="breadcrumb-item">Bootstrap Tables</li>
 		<li class="breadcrumb-item active">Styling Tables</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12">
@@ -346,8 +346,8 @@
 				</div>
 			</div>
 		</div>
-	</div>	
-	
+	</div>
+
 	@push('scripts')
 	@endpush
 

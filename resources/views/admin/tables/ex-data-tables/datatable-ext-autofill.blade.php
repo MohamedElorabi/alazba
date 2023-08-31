@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Auto fill
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -1998,7 +1998,7 @@
 	    </div>
 	</div>
 
-	
+
 	@push('scripts')
 	<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.buttons.min.js')}}"></script>

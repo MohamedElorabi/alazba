@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Typeahead
- {{ $title }}
+ {{--    {{ $title }} --}}
 @endsection
 
 @push('css')

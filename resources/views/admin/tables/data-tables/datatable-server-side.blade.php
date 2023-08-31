@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Server Side
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -17,7 +17,7 @@
 		<li class="breadcrumb-item">Data Tables</li>
 		<li class="breadcrumb-item active">Server Side</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 	    <div class="row">
 	        <!-- Server Side Processing start-->
@@ -129,7 +129,7 @@
 	        </div>
 	    </div>
 	</div>
-	
+
 	@push('scripts')
 	<script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>

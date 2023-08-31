@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Touchspin
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')

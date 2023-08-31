@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Advance init
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -17,7 +17,7 @@
 		<li class="breadcrumb-item">Data Tables</li>
 		<li class="breadcrumb-item active">Advance init</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
         <div class="row">
           <div class="col-sm-12">
@@ -6886,7 +6886,7 @@
           </div>
         </div>
     </div>
-	
+
 	@push('scripts')
 	<script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>

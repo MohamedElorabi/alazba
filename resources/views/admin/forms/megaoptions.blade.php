@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Mega options
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -16,7 +16,7 @@
 		<li class="breadcrumb-item">Form Controls</li>
         <li class="breadcrumb-item active">Mega options</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 col-xl-6">
@@ -479,8 +479,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	@push('scripts')
 	<script src="{{ asset('assets/js/height-equal.js') }}"></script>
 	@endpush

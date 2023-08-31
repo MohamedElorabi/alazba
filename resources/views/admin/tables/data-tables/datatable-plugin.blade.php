@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Plug in
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -17,7 +17,7 @@
 		<li class="breadcrumb-item">Data Tables</li>
 		<li class="breadcrumb-item active">Plug in</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 	    <div class="row">
 	        <!-- DOM / jQuery  Starts-->
@@ -2586,7 +2586,7 @@
 	        </div>
 	    </div>
 	</div>
-	
+
 	@push('scripts')
 	<script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>

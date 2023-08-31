@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\FlatController;
+use App\Http\Controllers\Admin\PropertyController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
@@ -13,6 +15,32 @@ Route::prefix('widgets')->group(function () {
 	Route::view('general-widget', 'admin.widgets.general-widget')->name('general-widget');
 	Route::view('chart-widget', 'admin.widgets.chart-widget')->name('chart-widget');
 });
+
+
+
+// propertis
+Route::prefix('properties')->group(function () {
+	Route::get('/', [PropertyController::class, 'index'])->name('properties');
+    Route::get('/create', [PropertyController::class, 'create'])->name('create.property');
+    Route::get('/show/{id}', [PropertyController::class, 'show'])->name('show.property');
+    Route::post('/store', [PropertyController::class, 'store'])->name('store.property');
+    Route::get('/edit/{id}', [PropertyController::class, 'edit'])->name('edit.property');
+    Route::post('/update/{id}', [PropertyController::class, 'update'])->name('update.property');
+    Route::delete('/delete/{id}', [PropertyController::class, 'destroy'])->name('delete.property');
+});
+
+
+// flats
+Route::prefix('flats')->group(function () {
+	Route::get('/', [FlatController::class, 'index'])->name('flats');
+    Route::get('/create', [FlatController::class, 'create'])->name('create.flat');
+    Route::get('/show/{id}', [FlatController::class, 'show'])->name('show.flat');
+    Route::post('/store', [FlatController::class, 'store'])->name('store.flat');
+    Route::get('/edit/{id}', [FlatController::class, 'edit'])->name('edit.flat');
+    Route::post('/update/{id}', [FlatController::class, 'update'])->name('update.flat');
+    Route::delete('/delete/{id}', [FlatController::class, 'destroy'])->name('delete.flat');
+});
+
 
 Route::prefix('ui-kits')->group(function () {
 	Route::view('state-color', 'admin.ui-kits.state-color')->name('state-color');

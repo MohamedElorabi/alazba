@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Input groups
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -16,7 +16,7 @@
 		<li class="breadcrumb-item">Form Controls</li>
  		<li class="breadcrumb-item active">Input groups</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12">
@@ -163,8 +163,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	@push('scripts')
 	@endpush
 

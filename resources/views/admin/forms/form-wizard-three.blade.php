@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Form Wizard With Icon
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -16,7 +16,7 @@
 		<li class="breadcrumb-item">Form Layout</li>
 		<li class="breadcrumb-item active">Form Wizard 3</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<div class="row">
 		  <div class="col-sm-12">
@@ -98,7 +98,7 @@
 		  </div>
 		</div>
 	  </div>
-	
+
 	@push('scripts')
 	<script src="{{asset('assets/js/form-wizard/form-wizard-three.js')}}"></script>
     <script src="{{asset('assets/js/form-wizard/jquery.backstretch.min.js')}}"></script>

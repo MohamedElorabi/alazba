@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Date Picker
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -17,7 +17,7 @@
 		<li class="breadcrumb-item">Form Widgets</li>
         <li class="breadcrumb-item active">Date Picker</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<div class="card">
 			<div class="card-header">
@@ -98,8 +98,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	@push('scripts')
 	<script src="{{ asset('assets/js/datepicker/date-picker/datepicker.js') }}"></script>
     <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>

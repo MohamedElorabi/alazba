@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Select2
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')

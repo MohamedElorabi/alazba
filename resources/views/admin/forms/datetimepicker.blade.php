@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Date Time Picker
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')

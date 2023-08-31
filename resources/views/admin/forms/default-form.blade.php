@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')Default Forms
- {{ $title }}
+ {{-- {{ $title }} --}}
 @endsection
 
 @push('css')
@@ -16,7 +16,7 @@
 		<li class="breadcrumb-item">Form Layout</li>
 		<li class="breadcrumb-item active">Default Forms</li>
 	@endcomponent
-	
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 col-xl-6">
@@ -233,7 +233,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	@push('scripts')
 	<script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
