@@ -68,10 +68,7 @@
                         <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/properties') }};">
                             <li><a href="{{ route('properties') }}"
                                     class="{{ routeActive('state-color') }}">properties</a></li>
-                            <li><a href="{{ route('create.property') }}"class="{{ routeActive('typography') }}">create
-                                    property</a></li>
-                            <li><a href="{{ route('typography') }}"class="{{ routeActive('typography') }}">edit
-                                    property</a></li>
+                            <li><a href="{{ route('create.property') }}"class="{{ routeActive('typography') }}">create property</a></li>
                         </ul>
                     </li>
 
@@ -82,10 +79,70 @@
                                 data-feather="box"></i><span>Flats</span></a>
                         <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/flats') }};">
                             <li><a href="{{ route('flats') }}" class="{{ routeActive('state-color') }}">flats</a></li>
-                            <li><a href="{{ route('create.flat') }}"class="{{ routeActive('typography') }}">create
-                                    flat</a></li>
-                            <li><a href="{{ route('typography') }}"class="{{ routeActive('typography') }}">edit
-                                    flat</a></li>
+                            <li><a href="{{ route('create.flat') }}"class="{{ routeActive('typography') }}">create flat</a></li>
+                        </ul>
+                    </li>
+
+
+                    {{-- users --}}
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/users') }}" href="javascript:void(0)"><i
+                                data-feather="users"></i><span>Users</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/users') }};">
+                            <li><a href="{{ route('users') }}" class="{{ routeActive('state-color') }}">users</a></li>
+                            <li><a href="{{ route('create.user') }}"class="{{ routeActive('typography') }}">create
+                                    user</a></li>
+
+                        </ul>
+                    </li>
+
+
+                    {{-- user documents --}}
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/user_documents') }}" href="javascript:void(0)"><i
+                                data-feather="users"></i><span>User Documents</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/user_documents') }};">
+                            <li><a href="{{ route('user_documents') }}" class="{{ routeActive('state-color') }}">user Documents</a></li>
+                            <li><a href="{{ route('create.user_document') }}"class="{{ routeActive('typography') }}">create user</a></li>
+
+                        </ul>
+                    </li>
+
+
+                    {{-- contracts --}}
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/contracts') }}" href="javascript:void(0)"><i
+                                data-feather="report"></i><span>Contracts</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/contracts') }};">
+                            <li><a href="{{ route('contracts') }}" class="{{ routeActive('state-color') }}">contracts</a></li>
+                            <li><a href="{{ route('create.contract') }}"class="{{ routeActive('typography') }}">create contracts</a></li>
+
+                        </ul>
+                    </li>
+
+
+
+                    {{-- services --}}
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/services') }}" href="javascript:void(0)"><i
+                                data-feather="report"></i><span>Services</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/services') }};">
+                            <li><a href="{{ route('services') }}" class="{{ routeActive('state-color') }}">services</a></li>
+                            <li><a href="{{ route('create.service') }}"class="{{ routeActive('typography') }}">create services</a></li>
+
+                        </ul>
+                    </li>
+
+
+
+                    {{-- requests --}}
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/requests') }}" href="javascript:void(0)"><i
+                                data-feather="report"></i><span>Request</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/requests') }};">
+                            <li><a href="{{ route('requests') }}" class="{{ routeActive('state-color') }}">requests</a></li>
+                            <li><a href="{{ route('create.request') }}"class="{{ routeActive('typography') }}">create requests</a></li>
+
                         </ul>
                     </li>
 

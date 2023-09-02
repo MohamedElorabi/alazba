@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\ContractController;
 use App\Http\Controllers\Admin\FlatController;
 use App\Http\Controllers\Admin\PropertyController;
+use App\Http\Controllers\Admin\RequestController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserDocumentController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
@@ -40,6 +45,78 @@ Route::prefix('flats')->group(function () {
     Route::post('/update/{id}', [FlatController::class, 'update'])->name('update.flat');
     Route::delete('/delete/{id}', [FlatController::class, 'destroy'])->name('delete.flat');
 });
+
+
+
+// users
+Route::prefix('users')->group(function () {
+	Route::get('/', [UserController::class, 'index'])->name('users');
+    Route::get('/create', [UserController::class, 'create'])->name('create.user');
+    Route::get('/show/{id}', [UserController::class, 'show'])->name('show.user');
+    Route::post('/store', [UserController::class, 'store'])->name('store.user');
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit.user');
+    Route::post('/update/{id}', [UserController::class, 'update'])->name('update.user');
+    Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('delete.user');
+});
+
+
+
+// user documents
+Route::prefix('user_documents')->group(function () {
+	Route::get('/', [UserDocumentController::class, 'index'])->name('user_documents');
+    Route::get('/create', [UserDocumentController::class, 'create'])->name('create.user_document');
+    Route::get('/show/{id}', [UserDocumentController::class, 'show'])->name('show.user_document');
+    Route::post('/store', [UserDocumentController::class, 'store'])->name('store.user_document');
+    Route::get('/edit/{id}', [UserDocumentController::class, 'edit'])->name('edit.user_document');
+    Route::post('/update/{id}', [UserDocumentController::class, 'update'])->name('update.user_document');
+    Route::delete('/delete/{id}', [UserDocumentController::class, 'destroy'])->name('delete.user_document');
+});
+
+
+
+
+// contracts
+Route::prefix('contracts')->group(function () {
+	Route::get('/', [ContractController::class, 'index'])->name('contracts');
+    Route::get('/create', [ContractController::class, 'create'])->name('create.contract');
+    Route::get('/show/{id}', [ContractController::class, 'show'])->name('show.contract');
+    Route::post('/store', [ContractController::class, 'store'])->name('store.contract');
+    Route::get('/edit/{id}', [ContractController::class, 'edit'])->name('edit.contract');
+    Route::post('/update/{id}', [ContractController::class, 'update'])->name('update.contract');
+    Route::delete('/delete/{id}', [ContractController::class, 'destroy'])->name('delete.contract');
+});
+
+
+
+
+// services
+Route::prefix('services')->group(function () {
+	Route::get('/', [ServiceController::class, 'index'])->name('services');
+    Route::get('/create', [ServiceController::class, 'create'])->name('create.service');
+    Route::get('/show/{id}', [ServiceController::class, 'show'])->name('show.service');
+    Route::post('/store', [ServiceController::class, 'store'])->name('store.service');
+    Route::get('/edit/{id}', [ServiceController::class, 'edit'])->name('edit.service');
+    Route::post('/update/{id}', [ServiceController::class, 'update'])->name('update.service');
+    Route::delete('/delete/{id}', [ServiceController::class, 'destroy'])->name('delete.service');
+});
+
+
+
+// requests
+Route::prefix('requests')->group(function () {
+	Route::get('/', [RequestController::class, 'index'])->name('requests');
+    Route::get('/create', [RequestController::class, 'create'])->name('create.request');
+    Route::get('/show/{id}', [RequestController::class, 'show'])->name('show.request');
+    Route::post('/store', [RequestController::class, 'store'])->name('store.request');
+    Route::get('/edit/{id}', [RequestController::class, 'edit'])->name('edit.request');
+    Route::post('/update/{id}', [RequestController::class, 'update'])->name('update.request');
+    Route::delete('/delete/{id}', [RequestController::class, 'destroy'])->name('delete.request');
+});
+
+
+
+
+
 
 
 Route::prefix('ui-kits')->group(function () {

@@ -43,8 +43,12 @@
                                             <td>
                                                 <a href="{{ route('edit.property', $property->id) }}"
                                                     class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-                                                <a href="{{ route('delete.property', $property->id) }}"
-                                                    class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+
+                                                <form method="post" action="{{ route('delete.property', $property->id) }}">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="btn btn-danger  show_confirm btn-xs"><i class="fa fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

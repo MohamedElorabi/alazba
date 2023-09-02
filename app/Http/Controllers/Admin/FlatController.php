@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FlatRequest;
 use App\Models\Flat;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class FlatController extends Controller
@@ -22,15 +24,24 @@ class FlatController extends Controller
      */
     public function create()
     {
-        //
+        $properties = Property::all();
+        return view('admin.flats.create', compact('properties'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FlatRequest $request)
     {
-        //
+        $data = Flat::create([
+            'property_id' => $request->property_id,
+            'floor_number' => $request->floor_number,
+            'distance' => $request->distance,
+            'rent_amount' => $request->rent_amount,
+        ]);
+
+
+        return redirect(route('flats'));
     }
 
     /**
@@ -46,15 +57,26 @@ class FlatController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $flat = Flat::findOrFail($id);
+        $properties = Property::all();
+        return view('admin.flats.edit', compact('flat','properties'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FlatRequest $request, string $id)
     {
-        //
+        $flat = Flat::findOrFail($id);
+        $data = [
+            'name' => $request->name,
+            'address' => $request->address,
+            'floors_count' => $request->floors_count,
+        ];
+
+        $flat->update($data);
+
+        return redirect(route('flats'));
     }
 
     /**
@@ -62,6 +84,8 @@ class FlatController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $flat = Flat::findOrFail($id);
+        $flat->delete();
+        return redirect(route('flats'));
     }
 }

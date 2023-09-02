@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Flats
+    Services
     {{-- {{ $title }} --}}
 @endsection
 
@@ -13,9 +13,9 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Flats</h3>
+            <h3>Services</h3>
         @endslot
-        <li class="breadcrumb-item active">Flats</li>
+        <li class="breadcrumb-item active">Services</li>
     @endcomponent
 
     <div class="container-fluid">
@@ -29,24 +29,26 @@
                             <table class="display" id="basic-2">
                                 <thead>
                                     <tr>
-                                        <th>Property</th>
-                                        <th>Floor Number</th>
-                                        <th>Distance</th>
-                                        <th>Rent Amount</th>
+                                        <th>Name Ar</th>
+                                        <th>Name En</th>
+                                        <th>Image</th>
+
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($flats as $flat)
+                                    @foreach ($services as $service)
                                         <tr>
-                                            <td>{{ $flat->property->name }}</td>
-                                            <td>{{ $flat->floor_number }}</td>
-                                            <td>{{ $flat->distance }}</td>
-                                            <td>{{ $flat->rent_amount }}</td>
+                                            <td>{{ $service->name_ar }}</td>
+                                            <td>{{ $service->name_en }}</td>
                                             <td>
-                                                <a href="{{ route('edit.flat', $flat->id) }}" class="btn btn-primary"><i
-                                                        class="fa fa-edit"></i> Edit</a>
-                                                        <form method="post" action="{{ route('delete.flat', $flat->id) }}">
+                                                <img src="{{asset('storage/services/'.$service->image)}}" width="150px" class="image_thumbnail image-preview" alt="">
+                                            </td>
+
+                                            <td>
+                                                <a href="{{ route('edit.service', $service->id) }}" class="btn btn-primary"><i
+                                                        class="fa fa-edit"></i>Edit</a>
+                                                        <form method="post" action="{{ route('delete.service', $service->id) }}">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <button type="submit" class="btn btn-danger  show_confirm btn-xs"><i class="fa fa-trash"></i></button>

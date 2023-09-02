@@ -23,7 +23,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view('admin.properties.create_property');
+        return view('admin.properties.create');
     }
 
     /**
@@ -55,7 +55,7 @@ class PropertyController extends Controller
     public function edit(string $id)
     {
         $property = Property::findOrFail($id);
-        return view('admin.properties.edit_property', compact('property'));
+        return view('admin.properties.edit', compact('property'));
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Flats
+    Requests
     {{-- {{ $title }} --}}
 @endsection
 
@@ -13,9 +13,9 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Flats</h3>
+            <h3>Requests</h3>
         @endslot
-        <li class="breadcrumb-item active">Flats</li>
+        <li class="breadcrumb-item active">Requests</li>
     @endcomponent
 
     <div class="container-fluid">
@@ -29,24 +29,26 @@
                             <table class="display" id="basic-2">
                                 <thead>
                                     <tr>
-                                        <th>Property</th>
-                                        <th>Floor Number</th>
-                                        <th>Distance</th>
-                                        <th>Rent Amount</th>
+                                        <th>User</th>
+                                        <th>Flat</th>
+                                        <th>Service</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($flats as $flat)
+                                    @foreach ($requests as $item)
                                         <tr>
-                                            <td>{{ $flat->property->name }}</td>
-                                            <td>{{ $flat->floor_number }}</td>
-                                            <td>{{ $flat->distance }}</td>
-                                            <td>{{ $flat->rent_amount }}</td>
+                                            {{-- <td>{{ $item->user->passport_id }}</td>
+                                            <td>{{ $item->flat->floor_number }}</td>
+                                            <td>{{ $item->service->name }}</td> --}}
+                                            <td>{{ $item->date }}</td>
+                                            <td>{{ $item->status }}</td>
                                             <td>
-                                                <a href="{{ route('edit.flat', $flat->id) }}" class="btn btn-primary"><i
+                                                <a href="{{ route('edit.request', $item->id) }}" class="btn btn-primary"><i
                                                         class="fa fa-edit"></i> Edit</a>
-                                                        <form method="post" action="{{ route('delete.flat', $flat->id) }}">
+                                                        <form method="post" action="{{ route('delete.request', $item->id) }}">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <button type="submit" class="btn btn-danger  show_confirm btn-xs"><i class="fa fa-trash"></i></button>

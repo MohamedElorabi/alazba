@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class UserController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.users.index', compact('users'));
+        $services = Service::all();
+        return view('admin.services.index', compact('services'));
     }
 
     /**
@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.services.create');
     }
 
     /**
@@ -36,21 +36,17 @@ class UserController extends Controller
         {
             $image = $request->file('image');
             $file_name = rand() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('public/users',$file_name);
+            $path = $image->storeAs('public/services',$file_name);
             $imageName = $file_name;
         }
 
-         User::create([
-            'phone' => $request->phone,
-            'password' => bcrypt($request->password),
-            'passport_id' => $request->passport_id,
-            'nationalty' => $request->nationalty,
+         Service::create([
+            'name_ar' => $request->name_ar,
+            'name_en' => $request->name_en,
             'image' => $imageName,
-            'status' => $request->status,
-            'type' => $request->type,
         ]);
 
-        return redirect(route('users'));
+        return redirect(route('services'));
     }
 
     /**
@@ -66,8 +62,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user = User::findOrFail($id);
-        return view('admin.users.edit', compact('user'));
+        $service = Service::findOrFail($id);
+        return view('admin.services.edit', compact('service'));
     }
 
     /**
@@ -75,13 +71,10 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user = User::findOrFail($id);
+        $service = Service::findOrFail($id);
             $data = [
-                'phone' => $request->phone,
-                'passport_id' => $request->passport_id,
-                'nationalty' => $request->nationalty,
-                'status' => $request->status,
-                'type' => $request->type,
+                'name_ar' => $request->name_ar,
+                'name_en' => $request->name_en,
             ];
 
 
@@ -89,20 +82,19 @@ class UserController extends Controller
             {
                 $image = $request->file('image');
                 $file_name = rand() . '.' . $image->getClientOriginalExtension();
-                if($user->image)
+                if($service->image)
                 {
-                    Storage::delete('public/users/' . $user->image);
+                    Storage::delete('public/services/' . $service->image);
                 }
-                $path = $image->storeAs('public/users',$file_name);
+                $path = $image->storeAs('public/services',$file_name);
 
-                $user['image'] = $file_name;
+                $service['image'] = $file_name;
 
             }
 
-            $user->update($request->except('image'));
+            $service->update($request->except('image'));
 
-            return redirect(route('users'));
-
+            return redirect(route('services'));
     }
 
     /**
@@ -110,8 +102,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect(route('users'));
+        $service = Service::findOrFail($id);
+        $service->delete();
+        return redirect(route('services'));
     }
 }

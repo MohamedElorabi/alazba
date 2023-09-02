@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\UserDocument;
 use Illuminate\Http\Request;
 
 class UserDocumentController extends Controller
@@ -12,7 +14,8 @@ class UserDocumentController extends Controller
      */
     public function index()
     {
-        //
+        $user_documents = UserDocument::all();
+        return view('admin.userDocuments.index', compact('user_documents'));
     }
 
     /**
@@ -20,7 +23,8 @@ class UserDocumentController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        return view('admin.userDocuments.create',compact('users'));
     }
 
     /**
@@ -28,8 +32,34 @@ class UserDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $documentsData = $request->validate([
+            'name.*' => 'required|string|max:255',
+            'file.*' => 'required|file|max:2048', // Adjust the max file size as needed
+            'type.*' => 'required|string',
+            'expiry_date.*' => 'required|date',
+            'user_id' => 'required',
+        ]);
+
+        foreach ($documentsData['name'] as $key => $name) {
+            $userDocument = new UserDocument();
+            $userDocument->name = $name;
+            $userDocument->type = $documentsData['type'][$key];
+            $userDocument->expiry_date = $documentsData['expiry_date'][$key];
+            $userDocument->user_id = $documentsData['user_id'];
+
+            if ($request->hasFile('file.' . $key)) {
+                $file = $request->file('file.' . $key);
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('public/user_documents',$fileName);
+                $userDocument->file = $fileName;
+            }
+
+            $userDocument->save();
+        }
+
+        return redirect()->route('documents')->with('success', 'Documents uploaded successfully');
     }
+
 
     /**
      * Display the specified resource.
