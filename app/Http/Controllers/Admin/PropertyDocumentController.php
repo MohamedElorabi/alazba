@@ -40,27 +40,33 @@ class PropertyDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->hasFile('file')) {
 
-            foreach ($request->file('file') as $image) {
+        $documentsData = $request->validate([
+            'name.*' => 'required|string|max:255',
+            'file.*' => 'required|file|max:2048',
+            'expiry_date.*' => 'required|date',
+            'property_id' => 'required',
+        ]);
 
-                $file_name = rand() . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('public/property_documents',$file_name);
-                $imageName = $file_name;
+        foreach ($documentsData['name'] as $key => $name) {
+            $propertyDocument = new PropertyDocument();
+            $propertyDocument->name = $name;
+            $propertyDocument->expiry_date = $documentsData['expiry_date'][$key];
+            $propertyDocument->property_id = $documentsData['property_id'];
 
-                PropertyDocument::create([
-                    'name' => $request->name,
-                    'file' =>  $imageName,
-                    'expiry_date' => $request->expiry_date,
-                    'property_id' => $request->property_id,
-                ]);
+            if ($request->hasFile('file.' . $key)) {
+                $file = $request->file('file.' . $key);
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('public/property_documents',$fileName);
+                $propertyDocument->file = $fileName;
             }
+
+            $propertyDocument->save();
         }
 
-        return response()->json([
-            'status' => true,
-            'message' => 'Data Created Successfully.',
-        ]);
+        return redirect()->route('user_documents')->with('success', 'Documents uploaded successfully');
+
+
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Edit User
+    Edit Property Document
     {{-- {{ $title }} --}}
 @endsection
 
@@ -11,10 +11,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Edit User</h3>
+            <h3>Edit Property Document</h3>
         @endslot
-        <li class="breadcrumb-item">Users</li>
-        <li class="breadcrumb-item active">Edit User</li>
+        <li class="breadcrumb-item">Property Documents</li>
+        <li class="breadcrumb-item active">Edit Property Document</li>
     @endcomponent
 
     <div class="container-fluid">
@@ -26,8 +26,9 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <form class="theme-form mega-form" action="{{ route('update.user_document', $user_document->id) }}" method="post" enctype="multipart/form-data">
+                                <form class="theme-form mega-form" action="{{ route('update.user', $user->id) }}" method="post" enctype="multipart/form-data">
                                     @csrf
+
                                     <div id="documentFields">
                                         <div class="card document">
                                             <div class="card-head p-4 pb-0 text-end">
@@ -36,6 +37,9 @@
                                                 </button>
                                             </div>
                                             <div class="card-body px-4 py-2">
+
+
+
                                                 <div>
                                                     <div class="">
 
