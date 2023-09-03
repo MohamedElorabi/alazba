@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FlatRequest extends FormRequest
+class ContractRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,10 +22,7 @@ class FlatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'property_id' => 'required',
-            'floor_number' => 'required|number',
-            'distance' => 'required',
-            'rent_amount' => 'required',
+            //
         ];
     }
 }

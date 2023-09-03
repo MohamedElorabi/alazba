@@ -15,4 +15,10 @@ class Service extends Model
         'name_en',
         'image',
     ];
+
+
+    public function request()
+    {
+        return $this->belongsTo(Request::class);
+    }
 }

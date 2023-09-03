@@ -22,5 +22,16 @@ class Flat extends Model
     {
         return $this->belongsTo(Property::class);
     }
+
+    public function contract()
+    {
+        return $this->hasOne(Contract::class);
+    }
+
+
+    public function request()
+    {
+        return $this->hasMany(Request::class);
+    }
 }
 

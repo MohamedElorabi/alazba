@@ -34,7 +34,7 @@ class UserDocumentController extends Controller
     {
         $documentsData = $request->validate([
             'name.*' => 'required|string|max:255',
-            'file.*' => 'required|file|max:2048', // Adjust the max file size as needed
+            'file.*' => 'required|file|max:2048',
             'type.*' => 'required|string',
             'expiry_date.*' => 'required|date',
             'user_id' => 'required',
@@ -57,7 +57,7 @@ class UserDocumentController extends Controller
             $userDocument->save();
         }
 
-        return redirect()->route('documents')->with('success', 'Documents uploaded successfully');
+        return redirect()->route('user_documents')->with('success', 'Documents uploaded successfully');
     }
 
 
@@ -90,6 +90,8 @@ class UserDocumentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user_document = UserDocument::findOrFail($id);
+        $user_document->delete();
+        return redirect(route('user_documents'));
     }
 }

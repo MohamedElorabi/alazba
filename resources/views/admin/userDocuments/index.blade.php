@@ -38,24 +38,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($user_documents as $user_document)
                                         <tr>
-                                            <td>{{ $user->phone }}</td>
-                                            <td>{{ $user->passport_id }}</td>
-                                            <td>{{ $user->nationalty }}</td>
+                                            <td>{{ $user_document->name }}</td>
                                             <td>
-                                                <img src="{{asset('storage/users/'.$user->image)}}" width="150px" class="image_thumbnail image-preview" alt="">
+                                                <img src="{{ asset('storage/user_documents/' . $user_document->file) }}"
+                                                    width="150px" class="image_thumbnail image-preview" alt="">
                                             </td>
-                                            <td>{{ $user->status }}</td>
-                                            <td>{{ $user->type }}</td>
+                                            <td>{{ $user_document->type }}</td>
+                                            <td>{{ $user_document->expiry_date }}</td>
+                                            <td>{{ $user_document->user_id }}</td>
                                             <td>
-                                                <a href="{{ route('edit.user', $user->id) }}" class="btn btn-primary"><i
-                                                        class="fa fa-edit"></i> Edit</a>
-                                                        <form method="post" action="{{ route('delete.user', $user->id) }}">
-                                                            @csrf
-                                                            <input type="hidden" name="_method" value="DELETE">
-                                                            <button type="submit" class="btn btn-danger  show_confirm btn-xs"><i class="fa fa-trash"></i></button>
-                                                        </form>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <a href="{{ route('edit.user_document', $user_document->id) }}"
+                                                        class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                                                    <form method="post"
+                                                        action="{{ route('delete.user_document', $user_document->id) }}">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <button type="submit" class="btn btn-danger show_confirm btn-xs"><i
+                                                                class="fa fa-trash"></i>Delete</button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

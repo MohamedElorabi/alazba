@@ -53,4 +53,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserDocument::class);
     }
+
+
+    public function contracts()
+    {
+        return $this->hasMany(Contract::class);
+    }
+
+
+    public function requests()
+    {
+        return $this->hasMany(Request::class);
+    }
 }

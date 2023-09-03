@@ -16,4 +16,10 @@ class PropertyDocument extends Model
         'expiry_date',
         'property_id'
     ];
+
+
+    public function property()
+    {
+        return $this->belongsTo(Property::class);
+    }
 }

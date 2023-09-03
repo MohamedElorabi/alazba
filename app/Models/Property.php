@@ -16,10 +16,20 @@ class Property extends Model
         'floors_count',
     ];
 
+    public function property_document()
+    {
+        return $this->hasMany(PropertyDocument::class);
+    }
 
-    public function flat()
+    public function flats()
     {
         return $this->hasMany(Flat::class);
+    }
+
+
+    public function contracts()
+    {
+        return $this->hasMany(Contract::class);
     }
 
 }

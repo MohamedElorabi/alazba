@@ -19,4 +19,21 @@ class Contract extends Model
         'status',
         'amount',
     ];
+
+
+    public function property()
+    {
+        return $this->belongsTo(Property::class);
+    }
+
+
+    public function flat()
+    {
+        return $this->belongsTo(Flat::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

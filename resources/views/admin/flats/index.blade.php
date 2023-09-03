@@ -44,13 +44,16 @@
                                             <td>{{ $flat->distance }}</td>
                                             <td>{{ $flat->rent_amount }}</td>
                                             <td>
-                                                <a href="{{ route('edit.flat', $flat->id) }}" class="btn btn-primary"><i
-                                                        class="fa fa-edit"></i> Edit</a>
-                                                        <form method="post" action="{{ route('delete.flat', $flat->id) }}">
-                                                            @csrf
-                                                            <input type="hidden" name="_method" value="DELETE">
-                                                            <button type="submit" class="btn btn-danger  show_confirm btn-xs"><i class="fa fa-trash"></i></button>
-                                                        </form>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <a href="{{ route('edit.flat', $flat->id) }}" class="btn btn-primary"><i
+                                                            class="fa fa-edit"></i> Edit</a>
+                                                    <form method="post" action="{{ route('delete.flat', $flat->id) }}">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <button type="submit" class="btn btn-danger show_confirm btn-xs"><i
+                                                                class="fa fa-trash"></i>Delete</button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
