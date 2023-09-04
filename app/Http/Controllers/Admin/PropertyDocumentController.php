@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PropertyDocumentRequest;
+use App\Http\Requests\PropertyRequest;
 use App\Models\PropertyDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -38,7 +40,7 @@ class PropertyDocumentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PropertyDocumentRequest $request)
     {
 
         $documentsData = $request->validate([

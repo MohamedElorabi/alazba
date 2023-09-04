@@ -32,11 +32,17 @@
                                     <div class="mb-3">
                                         <label class="col-form-label">Name Ar</label>
                                         <input class="form-control" type="text" name="name_ar" value="{{service->name_ar}}" placeholder="Enter Name Ar" />
+                                         @error('name_ar')
+                                            <span class=" text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Name En</label>
                                         <input class="form-control" type="text" name="name_en" value="{{service->name_en}}" placeholder="Enter Name En" />
+                                         @error('name_en')
+                                            <span class=" text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
 
 

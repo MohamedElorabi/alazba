@@ -31,16 +31,25 @@
                                     <div class="mb-3">
                                         <label class="col-form-label">Name</label>
                                         <input class="form-control" type="text" name="name" placeholder="Name" />
+                                        @error('name')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label class="col-form-label">Address</label>
                                         <input class="form-control" type="text" name="address"
                                             placeholder="Enter Address" />
+                                        @error('address')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label class="col-form-label">Floors Count</label>
                                         <input class="form-control" type="Number" name="floors_count"
                                             placeholder="Enter Floors Count" />
+                                        @error('floors_count')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>

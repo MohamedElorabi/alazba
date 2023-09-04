@@ -44,23 +44,35 @@
                                                     <label class="col-form-label">Document Name:</label>
                                                     <input class="form-control" type="text" name="name[]"
                                                         placeholder="Document Name" />
+                                                    @error('name')
+                                                        <span class=" text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label class="col-form-label">Document File:</label>
                                                     <input class="form-control" type="file" name="file[]" />
+                                                    @error('file')
+                                                        <span class=" text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label class="col-form-label">Document Type:</label>
                                                     <input class="form-control" type="type" name="type[]"
                                                         placeholder="" />
+                                                    @error('type')
+                                                        <span class=" text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
 
 
                                                 <div class="mb-3">
                                                     <label class="col-form-label">Expiry Date:</label>
                                                     <input class="form-control" type="date" name="expiry_date[]" />
+                                                    @error('expiry_date')
+                                                        <span class=" text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
 
 
@@ -73,6 +85,9 @@
                                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                                         @endforeach
                                                     </select>
+                                                    @error('user_id')
+                                                        <span class=" text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
 
                                             </div>

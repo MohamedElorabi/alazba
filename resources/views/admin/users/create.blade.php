@@ -26,23 +26,35 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <form class="theme-form mega-form" action="{{ route('store.user') }}" method="post" enctype="multipart/form-data">
+                                <form class="theme-form mega-form" action="{{ route('store.user') }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Phone</label>
                                         <input class="form-control" type="number" name="phone" placeholder="Phone" />
+                                        @error('phone')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Password</label>
                                         <input class="form-control" type="password" name="password"
                                             placeholder="Enter Password" />
+
+                                        @error('password')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Passport Id</label>
-                                        <input class="form-control" type="number" name="passport_id" placeholder="Passport Id" />
+                                        <input class="form-control" type="number" name="passport_id"
+                                            placeholder="Passport Id" />
+                                        @error('passport_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
@@ -50,12 +62,18 @@
                                         <label class="col-form-label">Nationalty</label>
                                         <input class="form-control" type="text" name="nationalty"
                                             placeholder="Enter Nationalty" />
+                                        @error('nationalty')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Image</label>
-                                        <input class="form-control" type="file" name="image"/>
+                                        <input class="form-control" type="file" name="image" />
+                                        @error('image')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
@@ -65,12 +83,18 @@
                                             <option value="active">Active</option>
                                             <option value="inactive">InActive</option>
                                         </select>
+                                        @error('status')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Type</label>
                                         <input class="form-control" type="text" name="type"
                                             placeholder="Enter Type" />
+                                        @error('type')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 

@@ -11,7 +11,7 @@ class ContractRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class ContractRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id' => 'required',
+            'flat_id' => 'required',
+            'property_id' => 'required',
+            'start_date' => 'required|date',
+            'end_date'  => 'required|date',
+            'status' => 'required',
+            'amount' => 'required',
         ];
     }
 }

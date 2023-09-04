@@ -42,9 +42,9 @@
                                 <tbody>
                                     @foreach ($contracts as $contract)
                                         <tr>
-                                            {{-- <td>{{ $contract->user->passport_id }}</td>
-                                            <td>{{ $contract->flat->floor_number }}</td>
-                                            <td>{{ $contract->property->name }}</td> --}}
+                                            <td>{{ $contract->user->name }}</td>
+                                            <td>{{ $contract->flat->name }}</td>
+                                            <td>{{ $contract->property->name }}</td>
                                             <td>{{ $contract->start_date }}</td>
                                             <td>{{ $contract->end_date }}</td>
                                             <td>{{ $contract->status }}</td>

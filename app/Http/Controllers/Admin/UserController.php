@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
 
         if($request->hasFile('image'))
@@ -41,6 +42,7 @@ class UserController extends Controller
         }
 
          User::create([
+            'name' => $request->name,
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
             'passport_id' => $request->passport_id,
@@ -73,10 +75,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, string $id)
     {
         $user = User::findOrFail($id);
             $data = [
+                'name' => $request->name,
                 'phone' => $request->phone,
                 'passport_id' => $request->passport_id,
                 'nationalty' => $request->nationalty,

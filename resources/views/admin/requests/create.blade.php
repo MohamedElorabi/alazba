@@ -34,9 +34,12 @@
                                         <select class="form-select digits" name="user_id" id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($users as $user)
-                                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('user_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
@@ -45,9 +48,12 @@
                                         <select class="form-select digits" name="flat_id" id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($flats as $flat)
-                                                <option value="{{$flat->id}}">{{$flat->name}}</option>
+                                                <option value="{{ $flat->id }}">{{ $flat->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('flat_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
@@ -55,15 +61,21 @@
                                         <select class="form-select digits" name="service_id" id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($services as $service)
-                                                <option value="{{$service->id}}">{{$service->name}}</option>
+                                                <option value="{{ $service->id }}">{{ $service->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('service_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Date</label>
                                         <input class="form-control" type="date" name="date" />
+                                        @error('date')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
@@ -73,6 +85,9 @@
                                             <option value="active">Active</option>
                                             <option value="inactive">InActive</option>
                                         </select>
+                                        @error('status')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 

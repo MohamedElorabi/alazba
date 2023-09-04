@@ -47,7 +47,7 @@
                                             </td>
                                             <td>{{ $property_document->expiry_date }}</td>
                                             <td>{{ $property_document->property_id }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <div class="d-flex align-items-center gap-3">
                                                     <a href="{{ route('edit.property_document', $property_document->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
@@ -59,7 +59,7 @@
                                                                 class="fa fa-trash"></i>Delete</button>
                                                     </form>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

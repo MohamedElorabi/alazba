@@ -34,9 +34,13 @@
                                         <select class="form-select digits" name="user_id" id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($users as $user)
-                                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
                                             @endforeach
                                         </select>
+
+                                        @error('user_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
@@ -45,31 +49,47 @@
                                         <select class="form-select digits" name="flat_id" id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($flats as $flat)
-                                                <option value="{{$flat->id}}">{{$flat->name}}</option>
+                                                <option value="{{ $flat->id }}">{{ $flat->name }}</option>
                                             @endforeach
                                         </select>
+
+                                        @error('flat_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">property</label>
-                                        <select class="form-select digits" name="property_id" id="exampleFormControlSelect9">
+                                        <select class="form-select digits" name="property_id"
+                                            id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($properties as $property)
-                                                <option value="{{$property->id}}">{{$property->name}}</option>
+                                                <option value="{{ $property->id }}">{{ $property->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('property_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Start Date</label>
-                                        <input class="form-control" type="date" name="start_date" placeholder="Enter Start Date" />
+                                        <input class="form-control" type="date" name="start_date"
+                                            placeholder="Enter Start Date" />
+                                        @error('start_date')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
                                     <div class="mb-3">
                                         <label class="col-form-label">End Date</label>
-                                        <input class="form-control" type="date" name="end_date" placeholder="Enter End Date" />
+                                        <input class="form-control" type="date" name="end_date"
+                                            placeholder="Enter End Date" />
+                                        @error('end_date')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
@@ -79,6 +99,9 @@
                                             <option value="active">Active</option>
                                             <option value="inactive">InActive</option>
                                         </select>
+                                        @error('status')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
@@ -87,6 +110,10 @@
                                         <label class="col-form-label">Amount</label>
                                         <input class="form-control" type="Number" name="amount"
                                             placeholder="Enter Amount" />
+
+                                        @error('amount')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>

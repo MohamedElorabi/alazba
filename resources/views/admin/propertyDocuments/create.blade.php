@@ -44,29 +44,43 @@
                                                     <label class="col-form-label">Document Name:</label>
                                                     <input class="form-control" type="text" name="name[]"
                                                         placeholder="Document Name" />
+                                                    @error('name')
+                                                        <span class=" text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label class="col-form-label">Document File:</label>
                                                     <input class="form-control" type="file" name="file[]" />
+                                                    @error('file')
+                                                        <span class=" text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
 
 
                                                 <div class="mb-3">
                                                     <label class="col-form-label">Expiry Date:</label>
                                                     <input class="form-control" type="date" name="expiry_date[]" />
+                                                    @error('expiry_date')
+                                                        <span class=" text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
 
 
                                                 <div class="mb-3">
-                                                    <label class="form-label" for="exampleFormControlSelect9">Property</label>
+                                                    <label class="form-label"
+                                                        for="exampleFormControlSelect9">Property</label>
                                                     <select class="form-select digits" name="property_id"
                                                         id="exampleFormControlSelect9">
                                                         <option value="">------</option>
                                                         @foreach ($properties as $property)
-                                                            <option value="{{ $property->id }}">{{ $property->name }}</option>
+                                                            <option value="{{ $property->id }}">{{ $property->name }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
+                                                    @error('property_id')
+                                                        <span class=" text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
 
                                             </div>

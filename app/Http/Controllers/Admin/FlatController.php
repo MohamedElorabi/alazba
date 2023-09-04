@@ -34,6 +34,7 @@ class FlatController extends Controller
     public function store(FlatRequest $request)
     {
         $data = Flat::create([
+            'name' => $request->name,
             'property_id' => $request->property_id,
             'floor_number' => $request->floor_number,
             'distance' => $request->distance,
@@ -70,8 +71,10 @@ class FlatController extends Controller
         $flat = Flat::findOrFail($id);
         $data = [
             'name' => $request->name,
-            'address' => $request->address,
-            'floors_count' => $request->floors_count,
+            'property_id' => $request->property_id,
+            'floor_number' => $request->floor_number,
+            'distance' => $request->distance,
+            'rent_amount' => $request->rent_amount,
         ];
 
         $flat->update($data);

@@ -37,6 +37,9 @@
                                                 <option value="{{$user->id }}" {{ $user->id == $item->user_id ? 'selected' : '' }}>{{ $user->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('user_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
@@ -48,6 +51,9 @@
                                                 <option value="{{$flat->id }}" {{ $flat->id == $item->flat_id ? 'selected' : '' }}>{{ $flat->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('flat_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
@@ -58,12 +64,18 @@
                                             <option value="{{$service->id }}" {{ $service->id == $item->service_id ? 'selected' : '' }}>{{ $service->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('service_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Date</label>
                                         <input class="form-control" type="date" name="date" value="{{$item->date}}" placeholder="Enter Start Date" />
+                                        @error('date')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
@@ -73,6 +85,9 @@
                                             <option value="active" @if ($item->status == 'active') selected @endif>Active</option>
                                             <option value="inactive" @if ($item->stuts == 'inactive') selected @endif>InActive</option>
                                         </select>
+                                        @error('status')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="card-footer">

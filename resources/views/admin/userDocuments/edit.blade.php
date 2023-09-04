@@ -26,7 +26,9 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <form class="theme-form mega-form" action="{{ route('update.user_document', $user_document->id) }}" method="post" enctype="multipart/form-data">
+                                <form class="theme-form mega-form"
+                                    action="{{ route('update.user_document', $user_document->id) }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div id="documentFields">
                                         <div class="card document">
@@ -43,29 +45,44 @@
                                                             <label class="col-form-label">Document Name:</label>
                                                             <input class="form-control" type="text" name="name[]"
                                                                 placeholder="Document Name" />
+                                                            @error('name')
+                                                                <span class=" text-danger">{{ $message }}</span>
+                                                            @enderror
                                                         </div>
 
                                                         <div class="mb-3">
                                                             <label class="col-form-label">Document File:</label>
                                                             <input class="form-control" type="file" name="file[]" />
+                                                            @error('file')
+                                                                <span class=" text-danger">{{ $message }}</span>
+                                                            @enderror
                                                         </div>
 
 
                                                         <div class="mb-3">
                                                             <label class="col-form-label">Expiry Date:</label>
-                                                            <input class="form-control" type="date" name="expiry_date[]" />
+                                                            <input class="form-control" type="date"
+                                                                name="expiry_date[]" />
+                                                            @error('expiry_date')
+                                                                <span class=" text-danger">{{ $message }}</span>
+                                                            @enderror
                                                         </div>
 
 
                                                         <div class="mb-3">
-                                                            <label class="form-label" for="exampleFormControlSelect9">Property</label>
+                                                            <label class="form-label"
+                                                                for="exampleFormControlSelect9">Property</label>
                                                             <select class="form-select digits" name="property_id"
                                                                 id="exampleFormControlSelect9">
                                                                 <option value="">------</option>
                                                                 @foreach ($properties as $property)
-                                                                    <option value="{{ $property->id }}">{{ $property->name }}</option>
+                                                                    <option value="{{ $property->id }}">
+                                                                        {{ $property->name }}</option>
                                                                 @endforeach
                                                             </select>
+                                                            @error('property_id')
+                                                                <span class=" text-danger">{{ $message }}</span>
+                                                            @enderror
                                                         </div>
 
                                                     </div>
@@ -84,7 +101,8 @@
                                         {{-- <button type="submit" class="btn btn-primary">Submit</button>
                                                 <button class="btn btn-secondary">Cancel</button> --}}
 
-                                        <button class="btn btn-secondary" type="button" id="addDocument">Add Document</button>
+                                        <button class="btn btn-secondary" type="button" id="addDocument">Add
+                                            Document</button>
                                         <button class="btn btn-primary" type="submit">Upload Documents</button>
                                     </div>
                                 </form>

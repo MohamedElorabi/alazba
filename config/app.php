@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        // RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
 
         /*
@@ -185,7 +185,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        // 'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
     ])->toArray(),
 

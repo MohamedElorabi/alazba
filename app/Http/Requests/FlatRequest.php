@@ -22,6 +22,7 @@ class FlatRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required',
             'property_id' => 'required',
             'floor_number' => 'required|number',
             'distance' => 'required',
