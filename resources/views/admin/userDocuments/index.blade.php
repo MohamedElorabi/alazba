@@ -56,8 +56,9 @@
                                                         action="{{ route('delete.user_document', $user_document->id) }}">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
-                                                        <button type="submit" class="btn btn-danger show_confirm btn-xs"><i
-                                                                class="fa fa-trash"></i>Delete</button>
+                                                        <button type="submit"
+                                                            class="btn btn-danger  show_confirm btn-xs"><i
+                                                                class="fa fa-trash" data-toggle="tooltip" title='Delete'></i>Delete</button>
                                                     </form>
                                                 </div>
                                             </td> --}}

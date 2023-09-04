@@ -30,7 +30,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
 
         if($request->hasFile('image'))
@@ -52,7 +52,7 @@ class UserController extends Controller
             'type' => $request->type,
         ]);
 
-        return redirect(route('users'));
+        return redirect(route('users'))->with('success', 'Created successfully!');;
     }
 
     /**
@@ -104,7 +104,7 @@ class UserController extends Controller
 
             $user->update($request->except('image'));
 
-            return redirect(route('users'));
+            return redirect(route('users'))->with('success', 'Updated successfully!');;
 
     }
 
@@ -115,6 +115,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect(route('users'));
+        return redirect(route('users'))->with('success', 'Deleted successfully!');;
     }
 }
