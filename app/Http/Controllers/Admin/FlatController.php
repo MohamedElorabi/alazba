@@ -52,7 +52,9 @@ class FlatController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $flat = Flat::findOrFail($id);
+        $properties = Property::all();
+        return view('admin.flats.show', compact('flat','properties'));
     }
 
     /**

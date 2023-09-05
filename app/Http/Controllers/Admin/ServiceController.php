@@ -59,7 +59,8 @@ class ServiceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $service = Service::findOrFail($id);
+        return view('admin.services.show', compact('service'));
     }
 
     /**

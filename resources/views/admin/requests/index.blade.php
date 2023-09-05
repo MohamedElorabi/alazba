@@ -47,6 +47,8 @@
                                             <td>{{ $item->status }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
+                                                    <a href="{{ route('show.request', $item->id) }}"
+                                                        class="btn btn-primary"><i class="fa fa-eye"></i> show</a>
                                                     <a href="{{ route('edit.request', $item->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
                                                     <form method="post" action="{{ route('delete.request', $item->id) }}">

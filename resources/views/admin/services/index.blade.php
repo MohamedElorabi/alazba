@@ -47,6 +47,10 @@
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
 
+                                                    <a href="{{ route('show.service', $service->id) }}"
+                                                        class="btn btn-primary"><i class="fa fa-eye"></i> Show</a>
+
+
                                                     <a href="{{ route('edit.service', $service->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
 

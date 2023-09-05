@@ -57,7 +57,11 @@ class ContractController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $contract = Contract::findOrFail($id);
+        $users = User::all();
+        $flats = Flat::all();
+        $properties = Property::all();
+        return view('admin.contracts.show', compact('contract','users','flats','properties'));
     }
 
     /**
@@ -69,7 +73,7 @@ class ContractController extends Controller
         $users = User::all();
         $flats = Flat::all();
         $properties = Property::all();
-        return view('admin.flats.edit', compact('contract','users','flats','properties'));
+        return view('admin.contracts.edit', compact('contract','users','flats','properties'));
     }
 
     /**

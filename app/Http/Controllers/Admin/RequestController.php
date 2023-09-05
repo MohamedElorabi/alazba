@@ -55,7 +55,11 @@ class RequestController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item = ModelsRequest::find($id);
+        $users = User::all();
+        $flats = Flat::all();
+        $services = Service::all();
+        return view('admin.requests.show', compact('item', 'users', 'flats', 'services'));
     }
 
     /**

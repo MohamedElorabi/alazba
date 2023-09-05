@@ -47,6 +47,8 @@
                                             <td>{{ $flat->rent_amount }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
+                                                    <a href="{{ route('show.flat', $flat->id) }}" class="btn btn-primary"><i
+                                                        class="fa fa-eye"></i> Show</a>
                                                     <a href="{{ route('edit.flat', $flat->id) }}" class="btn btn-primary"><i
                                                             class="fa fa-edit"></i> Edit</a>
                                                     <form method="post" action="{{ route('delete.flat', $flat->id) }}">
