@@ -31,6 +31,15 @@
                                     @csrf
 
                                     <div class="mb-3">
+                                        <label class="col-form-label">Name</label>
+                                        <input class="form-control" type="text" name="name"
+                                            placeholder="Enter Name" />
+                                        @error('name')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-3">
                                         <label class="col-form-label">Phone</label>
                                         <input class="form-control" type="number" name="phone" placeholder="Phone" />
                                         @error('phone')

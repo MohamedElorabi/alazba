@@ -29,6 +29,7 @@
                             <table class="display" id="basic-2">
                                 <thead>
                                     <tr>
+                                        <th>Name</th>
                                         <th>Phone</th>
                                         <th>Passport Id</th>
                                         <th>Nationalty</th>
@@ -41,6 +42,7 @@
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
+                                            <td>{{ $user->name}}</td>
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->passport_id }}</td>
                                             <td>{{ $user->nationalty }}</td>

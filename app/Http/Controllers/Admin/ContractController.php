@@ -9,6 +9,7 @@ use App\Models\Flat;
 use App\Models\Property;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ContractController extends Controller
 {
@@ -47,7 +48,7 @@ class ContractController extends Controller
             'amount' => $request->amount,
         ]);
 
-
+        Session::flash('success','Created successfully!');
         return redirect(route('contracts'));
     }
 
@@ -89,6 +90,8 @@ class ContractController extends Controller
 
         $contract->update($data);
 
+        Session::flash('success','Updated successfully!');
+
         return redirect(route('contract'));
     }
 
@@ -99,6 +102,8 @@ class ContractController extends Controller
     {
         $contract = Contract::findOrFail($id);
         $contract->delete();
+
+        Session::flash('success','Deleted successfully!');
         return redirect(route('contracts'));
     }
 }

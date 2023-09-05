@@ -7,6 +7,7 @@ use App\Http\Requests\FlatRequest;
 use App\Models\Flat;
 use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class FlatController extends Controller
 {
@@ -41,6 +42,7 @@ class FlatController extends Controller
             'rent_amount' => $request->rent_amount,
         ]);
 
+        Session::flash('success','Created successfully!');
 
         return redirect(route('flats'));
     }
@@ -79,6 +81,8 @@ class FlatController extends Controller
 
         $flat->update($data);
 
+        Session::flash('success','Updated successfully!');
+
         return redirect(route('flats'));
     }
 
@@ -89,6 +93,8 @@ class FlatController extends Controller
     {
         $flat = Flat::findOrFail($id);
         $flat->delete();
+
+        Session::flash('success','Deleted successfully!');
         return redirect(route('flats'));
     }
 }

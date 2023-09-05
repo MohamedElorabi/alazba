@@ -31,6 +31,14 @@
                                     @csrf
 
                                     <div class="mb-3">
+                                        <label class="col-form-label">Name</label>
+                                        <input class="form-control" type="text" name="name" value="{{$flat->name}}" placeholder="Enter Name" />
+                                        @error('name')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">property</label>
                                         <select class="form-select digits" name="property_id"
                                             id="exampleFormControlSelect9">

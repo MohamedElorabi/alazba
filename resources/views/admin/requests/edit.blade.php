@@ -26,7 +26,8 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <form class="theme-form mega-form" action="{{ route('update.request', $item->id) }}" method="post">
+                                <form class="theme-form mega-form" action="{{ route('update.request', $item->id) }}"
+                                    method="post">
                                     @csrf
 
                                     <div class="mb-3">
@@ -34,7 +35,9 @@
                                         <select class="form-select digits" name="user_id" id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($users as $user)
-                                                <option value="{{$user->id }}" {{ $user->id == $item->user_id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                                <option value="{{ $user->id }}"
+                                                    {{ $user->id == $item->user_id ? 'selected' : '' }}>{{ $user->name }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @error('user_id')
@@ -48,7 +51,9 @@
                                         <select class="form-select digits" name="flat_id" id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($flats as $flat)
-                                                <option value="{{$flat->id }}" {{ $flat->id == $item->flat_id ? 'selected' : '' }}>{{ $flat->name }}</option>
+                                                <option value="{{ $flat->id }}"
+                                                    {{ $flat->id == $item->flat_id ? 'selected' : '' }}>{{ $flat->name }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @error('flat_id')
@@ -61,7 +66,9 @@
                                         <select class="form-select digits" name="service_id" id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($services as $service)
-                                            <option value="{{$service->id }}" {{ $service->id == $item->service_id ? 'selected' : '' }}>{{ $service->name }}</option>
+                                                <option value="{{ $service->id }}"
+                                                    {{ $service->id == $item->service_id ? 'selected' : '' }}>
+                                                    {{ $service->name_ar }}</option>
                                             @endforeach
                                         </select>
                                         @error('service_id')
@@ -72,7 +79,8 @@
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Date</label>
-                                        <input class="form-control" type="date" name="date" value="{{$item->date}}" placeholder="Enter Start Date" />
+                                        <input class="form-control" type="date" name="date"
+                                            value="{{ $item->date }}" placeholder="Enter Start Date" />
                                         @error('date')
                                             <span class=" text-danger">{{ $message }}</span>
                                         @enderror
@@ -82,8 +90,10 @@
                                         <label class="form-label" for="exampleFormControlSelect9">Status</label>
                                         <select class="form-select digits" name="status" id="exampleFormControlSelect9">
                                             <option value="">-- choose status ----</option>
-                                            <option value="active" @if ($item->status == 'active') selected @endif>Active</option>
-                                            <option value="inactive" @if ($item->stuts == 'inactive') selected @endif>InActive</option>
+                                            <option value="active" @if ($item->status == 'active') selected @endif>Active
+                                            </option>
+                                            <option value="inactive" @if ($item->stuts == 'inactive') selected @endif>
+                                                InActive</option>
                                         </select>
                                         @error('status')
                                             <span class=" text-danger">{{ $message }}</span>

@@ -34,7 +34,7 @@
                                         <th>Type</th>
                                         <th>Expiry Date</th>
                                         <th>User</th>
-                                        <th width='250px'>Action</th>
+                                        {{-- <th width='250px'>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +47,7 @@
                                             </td>
                                             <td>{{ $user_document->type }}</td>
                                             <td>{{ $user_document->expiry_date }}</td>
-                                            <td>{{ $user_document->user_id }}</td>
+                                            <td>{{ $user_document->user->name }}</td>
                                             {{-- <td>
                                                 <div class="d-flex align-items-center gap-3">
                                                     <a href="{{ route('edit.user_document', $user_document->id) }}"

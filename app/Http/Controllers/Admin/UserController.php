@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -51,8 +52,8 @@ class UserController extends Controller
             'status' => $request->status,
             'type' => $request->type,
         ]);
-
-        return redirect(route('users'))->with('success', 'Created successfully!');;
+        Session::flash('success','Created successfully!');
+        return redirect(route('users'));
     }
 
     /**
@@ -104,6 +105,7 @@ class UserController extends Controller
 
             $user->update($request->except('image'));
 
+            Session::flash('success','Updated successfully!');
             return redirect(route('users'))->with('success', 'Updated successfully!');;
 
     }
@@ -115,6 +117,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
+        Session::flash('success','Deleted successfully!');
         return redirect(route('users'))->with('success', 'Deleted successfully!');;
     }
 }

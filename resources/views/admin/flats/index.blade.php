@@ -29,6 +29,7 @@
                             <table class="display" id="basic-2">
                                 <thead>
                                     <tr>
+                                        <th>Name</th>
                                         <th>Property</th>
                                         <th>Floor Number</th>
                                         <th>Distance</th>
@@ -39,6 +40,7 @@
                                 <tbody>
                                     @foreach ($flats as $flat)
                                         <tr>
+                                            <td>{{ $flat->name }}</td>
                                             <td>{{ $flat->property->name }}</td>
                                             <td>{{ $flat->floor_number }}</td>
                                             <td>{{ $flat->distance }}</td>

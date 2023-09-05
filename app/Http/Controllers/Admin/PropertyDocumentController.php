@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyDocumentRequest;
 use App\Http\Requests\PropertyRequest;
+use App\Models\Property;
 use App\Models\PropertyDocument;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class PropertyDocumentController extends Controller
@@ -17,15 +19,7 @@ class PropertyDocumentController extends Controller
     public function index()
     {
         $property_documents  = PropertyDocument::all();
-        if(count($property_documents) > 0 )
-        {
-            return response()->json([
-                'data' => $property_documents
-            ]);
-        }
-        return response()->json([
-            'message' => 'no record found'
-        ]);
+        return view('admin.propertyDocuments.index', compact('property_documents'));
     }
 
 
@@ -34,13 +28,14 @@ class PropertyDocumentController extends Controller
      */
     public function create()
     {
-        //
+        $properties = Property::all();
+        return view('admin.propertyDocuments.create',compact('properties'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PropertyDocumentRequest $request)
+    public function store(Request $request)
     {
 
         $documentsData = $request->validate([
@@ -66,7 +61,9 @@ class PropertyDocumentController extends Controller
             $propertyDocument->save();
         }
 
-        return redirect()->route('user_documents')->with('success', 'Documents uploaded successfully');
+        Session::flash('success','Created successfully!');
+
+        return redirect()->route('user_documents');
 
 
     }

@@ -24,8 +24,13 @@ class Request extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function services()
+    public function flat()
     {
-        return $this->hasMany(Service::class);
+        return $this->belongsTo(Flat::class);
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
     }
 }

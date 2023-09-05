@@ -74,6 +74,23 @@
                     </li>
 
 
+                    {{-- property documents --}}
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/property_documents') }}"
+                            href="javascript:void(0)"><i data-feather=""></i><span>Property Documents</span></a>
+                        <ul class="nav-submenu menu-content"
+                            style="display: {{ prefixBlock('/property_documents') }};">
+                            <li><a href="{{ route('property_documents') }}"
+                                    class="{{ routeActive('state-color') }}">property
+                                    documents</a></li>
+                            <li><a
+                                    href="{{ route('create.property_document') }}"class="{{ routeActive('typography') }}">create
+                                    property document</a></li>
+
+                        </ul>
+                    </li>
+
+
                     {{-- flats --}}
                     <li class="dropdown">
                         <a class="nav-link menu-title {{ prefixActive('/flats') }}" href="javascript:void(0)"><i

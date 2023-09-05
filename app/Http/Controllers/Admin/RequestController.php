@@ -8,6 +8,7 @@ use App\Models\Request as ModelsRequest;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class RequestController extends Controller
 {
@@ -44,6 +45,7 @@ class RequestController extends Controller
             'status' => $request->status,
         ]);
 
+        Session::flash('success','Created successfully!');
 
         return redirect(route('requests'));
     }
@@ -85,6 +87,8 @@ class RequestController extends Controller
 
         $item->update($data);
 
+        Session::flash('success','Updated successfully!');
+
         return redirect(route('requests'));
     }
 
@@ -95,6 +99,9 @@ class RequestController extends Controller
     {
         $request = ModelsRequest::findOrFail($id);
         $request->delete();
+
+        Session::flash('success','Deleted successfully!');
+
         return redirect(route('requests'));
     }
 }

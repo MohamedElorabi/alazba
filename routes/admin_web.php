@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ContractController;
 use App\Http\Controllers\Admin\FlatController;
 use App\Http\Controllers\Admin\PropertyController;
+use App\Http\Controllers\Admin\PropertyDocumentController;
 use App\Http\Controllers\Admin\RequestController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\UserController;
@@ -33,6 +34,19 @@ Route::prefix('properties')->group(function () {
     Route::post('/update/{id}', [PropertyController::class, 'update'])->name('update.property');
     Route::delete('/delete/{id}', [PropertyController::class, 'destroy'])->name('delete.property');
 });
+
+
+// property documents
+Route::prefix('property_documents')->group(function () {
+	Route::get('/', [PropertyDocumentController::class, 'index'])->name('property_documents');
+    Route::get('/create', [PropertyDocumentController::class, 'create'])->name('create.property_document');
+    Route::get('/show/{id}', [PropertyDocumentController::class, 'show'])->name('show.property_document');
+    Route::post('/store', [PropertyDocumentController::class, 'store'])->name('store.property_document');
+    Route::get('/edit/{id}', [PropertyDocumentController::class, 'edit'])->name('edit.property_document');
+    Route::post('/update/{id}', [PropertyDocumentController::class, 'update'])->name('update.property_document');
+    Route::delete('/delete/{id}', [PropertyDocumentController::class, 'destroy'])->name('delete.property_document');
+});
+
 
 
 // flats

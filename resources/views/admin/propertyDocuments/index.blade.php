@@ -31,10 +31,9 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Files</th>
-                                        <th>Type</th>
                                         <th>Expiry Date</th>
-                                        <th>User</th>
-                                        <th width='250px'>Action</th>
+                                        <th>Property</th>
+                                        {{-- <th width='250px'>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,7 +45,7 @@
                                                     width="150px" class="image_thumbnail image-preview" alt="">
                                             </td>
                                             <td>{{ $property_document->expiry_date }}</td>
-                                            <td>{{ $property_document->property_id }}</td>
+                                            <td>{{ $property_document->property->name }}</td>
                                             {{-- <td>
                                                 <div class="d-flex align-items-center gap-3">
                                                     <a href="{{ route('edit.property_document', $property_document->id) }}"

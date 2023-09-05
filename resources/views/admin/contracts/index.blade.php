@@ -51,6 +51,9 @@
                                             <td>{{ $contract->amount }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
+                                                    <a href="{{ route('show.contract', $contract->id) }}"
+                                                        class="btn btn-success"><i class="fa fa-eye"></i> Show</a>
+
                                                     <a href="{{ route('edit.contract', $contract->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
                                                     <form method="post"
@@ -59,7 +62,8 @@
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit"
                                                             class="btn btn-danger  show_confirm btn-xs"><i
-                                                                class="fa fa-trash" data-toggle="tooltip" title='Delete'></i>Delete</button>
+                                                                class="fa fa-trash" data-toggle="tooltip"
+                                                                title='Delete'></i>Delete</button>
                                                     </form>
                                                 </div>
                                             </td>

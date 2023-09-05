@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
@@ -15,7 +16,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
+        $local = App()->getLocale();
+        $services = Service::select('id','name_'.$local.' as name', 'image')->get();
         return view('admin.services.index', compact('services'));
     }
 
@@ -46,6 +48,8 @@ class ServiceController extends Controller
             'name_en' => $request->name_en,
             'image' => $imageName,
         ]);
+
+        Session::flash('success','Created successfully!');
 
         return redirect(route('services'));
     }
@@ -94,6 +98,8 @@ class ServiceController extends Controller
             }
 
             $service->update($request->except('image'));
+
+            Session::flash('success','Updated successfully!');
 
             return redirect(route('services'));
     }

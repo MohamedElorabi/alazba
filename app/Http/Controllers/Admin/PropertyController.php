@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyRequest;
 use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PropertyController extends Controller
 {
@@ -37,6 +38,8 @@ class PropertyController extends Controller
             'floors_count' => $request->floors_count,
 
         ]);
+
+        Session::flash('success','Created successfully!');
 
         return redirect(route('properties'));
     }
@@ -72,6 +75,8 @@ class PropertyController extends Controller
 
         $property->update($data);
 
+        Session::flash('success','Updated successfully!');
+
         return redirect(route('properties'));
 
 
@@ -84,6 +89,9 @@ class PropertyController extends Controller
     {
         $property = Property::findOrFail($id);
         $property->delete();
+
+        Session::flash('success','Deleted successfully!');
+
         return redirect(route('properties'));
     }
 }

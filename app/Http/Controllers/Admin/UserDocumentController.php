@@ -7,6 +7,7 @@ use App\Http\Requests\UserDocumentRequest;
 use App\Models\User;
 use App\Models\UserDocument;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UserDocumentController extends Controller
 {
@@ -31,7 +32,7 @@ class UserDocumentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserDocumentRequest $request)
+    public function store(Request $request)
     {
         $documentsData = $request->validate([
             'name.*' => 'required|string|max:255',
@@ -58,7 +59,9 @@ class UserDocumentController extends Controller
             $userDocument->save();
         }
 
-        return redirect()->route('user_documents')->with('success', 'Documents uploaded successfully');
+        Session::flash('success','Created successfully!');
+
+        return redirect()->route('user_documents');
     }
 
 

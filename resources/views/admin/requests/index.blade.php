@@ -42,7 +42,7 @@
                                         <tr>
                                             <td>{{ $item->user->name }}</td>
                                             <td>{{ $item->flat->name }}</td>
-                                            <td>{{ $item->service->name }}</td>
+                                            <td>{{ $item->service->name_ar }}</td>
                                             <td>{{ $item->date }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
@@ -54,7 +54,8 @@
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit"
                                                             class="btn btn-danger  show_confirm btn-xs"><i
-                                                                class="fa fa-trash" data-toggle="tooltip" title='Delete'></i>Delete</button>
+                                                                class="fa fa-trash" data-toggle="tooltip"
+                                                                title='Delete'></i>Delete</button>
                                                     </form>
                                                 </div>
                                             </td>

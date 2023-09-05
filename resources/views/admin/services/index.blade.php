@@ -29,8 +29,7 @@
                             <table class="display" id="basic-2">
                                 <thead>
                                     <tr>
-                                        <th>Name Ar</th>
-                                        <th>Name En</th>
+                                        <th>Name</th>
                                         <th>Image</th>
 
                                         <th width='250px'>Action</th>
@@ -39,8 +38,7 @@
                                 <tbody>
                                     @foreach ($services as $service)
                                         <tr>
-                                            <td>{{ $service->name_ar }}</td>
-                                            <td>{{ $service->name_en }}</td>
+                                            <td>{{ $service->name }}</td>
                                             <td>
                                                 <img src="{{ asset('storage/services/' . $service->image) }}" width="150px"
                                                     class="image_thumbnail image-preview" alt="">
@@ -50,14 +48,16 @@
                                                 <div class="d-flex align-items-center gap-3">
 
                                                     <a href="{{ route('edit.service', $service->id) }}"
-                                                        class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
+                                                        class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+
                                                     <form method="post"
                                                         action="{{ route('delete.service', $service->id) }}">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit"
                                                             class="btn btn-danger  show_confirm btn-xs"><i
-                                                                class="fa fa-trash" data-toggle="tooltip" title='Delete'></i>Delete</button>
+                                                                class="fa fa-trash" data-toggle="tooltip"
+                                                                title='Delete'></i>Delete</button>
                                                     </form>
                                                 </div>
                                             </td>

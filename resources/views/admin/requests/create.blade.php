@@ -61,7 +61,7 @@
                                         <select class="form-select digits" name="service_id" id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($services as $service)
-                                                <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                                <option value="{{ $service->id }}">{{ $service->name_ar }}</option>
                                             @endforeach
                                         </select>
                                         @error('service_id')
