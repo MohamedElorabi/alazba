@@ -149,7 +149,7 @@ class UserController extends Controller
     public function user_contracts()
     {
         $user_contract = Contract::where('user_id', auth()->user()->id)->get();
-        if($user_contract)
+        if($user_contract->count() > 0)
         {
             return response()->json([
                 'status' => true,
@@ -171,7 +171,7 @@ class UserController extends Controller
         public function user_requests()
         {
             $user_requests = ModelsRequest::where('user_id', auth()->user()->id)->get();
-            if($user_requests)
+            if($user_requests->count() > 0)
             {
                 return response()->json([
                     'status' => true,
@@ -192,7 +192,7 @@ class UserController extends Controller
         public function user_documents()
         {
             $user_documents = UserDocument::where('user_id', auth()->user()->id)->get();
-            if($user_documents)
+            if($user_documents->count() > 0)
             {
                 return response()->json([
                     'status' => true,

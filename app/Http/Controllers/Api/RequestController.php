@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Request as ModelsRequest;
 use Illuminate\Http\Request;
 
 class RequestController extends Controller
@@ -20,7 +21,18 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ModelsRequest::create([
+            'user_id' => auth()->user()->id,
+            'flat_id' => $request->flat_id,
+            'service_id' => $request->service_id,
+            'date' => $request->date,
+            'status' => $request->status,
+        ]);
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Data Created Successfully.',
+        ]);
     }
 
     /**

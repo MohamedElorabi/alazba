@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ContractController;
 use App\Http\Controllers\Api\FlatController;
 use App\Http\Controllers\Api\PropertyController;
+use App\Http\Controllers\Api\RequestController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,17 +25,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/user_contracts', [UserController::class, 'user_contracts']);
     Route::get('/user_requests', [UserController::class, 'user_requests']);
     Route::get('/user_documents', [UserController::class, 'user_documents']);
+    Route::post('/request/store', [RequestController::class, 'store']);
 
 
 });
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+
 
 
 
