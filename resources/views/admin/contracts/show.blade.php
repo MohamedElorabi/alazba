@@ -29,7 +29,8 @@
                                 <form class="theme-form mega-form">
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">User</label>
-                                        <select class="form-select digits" name="user_id" id="exampleFormControlSelect9">
+                                        <select class="form-select digits" name="user_id" id="exampleFormControlSelect9"
+                                            disabled>
                                             <option value="">------</option>
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->id }}"
@@ -44,7 +45,8 @@
 
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">Flat</label>
-                                        <select class="form-select digits" name="flat_id" id="exampleFormControlSelect9">
+                                        <select class="form-select digits" name="flat_id" id="exampleFormControlSelect9"
+                                            disabled>
                                             <option value="">------</option>
                                             @foreach ($flats as $flat)
                                                 <option value="{{ $flat->id }}"
@@ -57,8 +59,8 @@
 
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">property</label>
-                                        <select class="form-select digits disabled" name="property_id"
-                                            id="exampleFormControlSelect9">
+                                        <select class="form-select digits" name="property_id" id="exampleFormControlSelect9"
+                                            disabled>
                                             <option value="">------</option>
                                             @foreach ($properties as $property)
                                                 <option value="{{ $property->id }}"
@@ -72,15 +74,15 @@
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Start Date</label>
-                                        <input class="form-control disabled" type="date" name="start_date"
-                                            value="{{ $contract->start_date }}" placeholder="Enter Start Date" />
+                                        <input class="form-control" type="date" name="start_date"
+                                            value="{{ $contract->start_date }}" disabled placeholder="Enter Start Date" />
                                     </div>
 
 
                                     <div class="mb-3">
                                         <label class="col-form-label">End Date</label>
-                                        <input class="form-control disabled" type="date" name="end_date"
-                                            value="{{ $contract->end_date }}" placeholder="Enter End Date" />
+                                        <input class="form-control" type="date" name="end_date"
+                                            value="{{ $contract->end_date }}" disabled placeholder="Enter End Date" />
                                         @error('end_date')
                                             <span class=" text-danger">{{ $message }}</span>
                                         @enderror
@@ -88,7 +90,8 @@
 
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">Status</label>
-                                        <select class="form-select digits disabled" name="status" id="exampleFormControlSelect9">
+                                        <select class="form-select digits" name="status" id="exampleFormControlSelect9"
+                                            disabled>
                                             <option value="">-- choose status ----</option>
                                             <option value="active" @if ($contract->status == 'active') selected @endif>Active
                                             </option>
@@ -102,7 +105,7 @@
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Amount</label>
-                                        <input class="form-control disabled" type="Number" name="amount"
+                                        <input class="form-control" disabled type="Number" name="amount"
                                             value="{{ $contract->amount }}" placeholder="Enter Amount" />
                                     </div>
 

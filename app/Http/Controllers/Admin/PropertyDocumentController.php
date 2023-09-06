@@ -63,7 +63,7 @@ class PropertyDocumentController extends Controller
 
         Session::flash('success','Created successfully!');
 
-        return redirect()->route('user_documents');
+        return redirect()->route('property_documents');
 
 
     }

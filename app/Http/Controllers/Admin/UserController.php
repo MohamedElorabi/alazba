@@ -61,7 +61,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::with('user_document')->find($id);
+        return view('admin.users.show', compact('user'));
     }
 
     /**

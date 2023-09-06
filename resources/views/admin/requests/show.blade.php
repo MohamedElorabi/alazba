@@ -29,7 +29,8 @@
                                 <form class="theme-form mega-form">
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">User</label>
-                                        <select class="form-select digits disabled" name="user_id" id="exampleFormControlSelect9">
+                                        <select class="form-select digits" disabled name="user_id"
+                                            id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->id }}"
@@ -43,7 +44,8 @@
 
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">Flat</label>
-                                        <select class="form-select digits disabled" name="flat_id" id="exampleFormControlSelect9">
+                                        <select class="form-select digits" disabled name="flat_id"
+                                            id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($flats as $flat)
                                                 <option value="{{ $flat->id }}"
@@ -56,7 +58,8 @@
 
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">service</label>
-                                        <select class="form-select digits disabled" name="service_id" id="exampleFormControlSelect9">
+                                        <select class="form-select digits" disabled name="service_id"
+                                            id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($services as $service)
                                                 <option value="{{ $service->id }}"
@@ -70,14 +73,15 @@
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Date</label>
-                                        <input class="form-control disabled" type="date" name="date"
+                                        <input class="form-control" disabled type="date" name="date"
                                             value="{{ $item->date }}" placeholder="Enter Start Date" />
 
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">Status</label>
-                                        <select class="form-select digits disabled" name="status" id="exampleFormControlSelect9">
+                                        <select class="form-select digits" disabled name="status"
+                                            id="exampleFormControlSelect9">
                                             <option value="">-- choose status ----</option>
                                             <option value="active" @if ($item->status == 'active') selected @endif>Active
                                             </option>

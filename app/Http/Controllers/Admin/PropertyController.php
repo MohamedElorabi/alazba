@@ -49,7 +49,8 @@ class PropertyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $property = Property::with('property_document')->find($id);
+        return view('admin.properties.show', compact('property'));
     }
 
     /**

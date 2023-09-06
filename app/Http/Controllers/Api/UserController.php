@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Models\Contract;
+use App\Models\Request as ModelsRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\UserDocument;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -140,4 +142,70 @@ class UserController extends Controller
             'message' => 'Data Deleted Successfully.',
         ]);
     }
+
+
+
+    // user contracts
+    public function user_contracts()
+    {
+        $user_contract = Contract::where('user_id', auth()->user()->id)->get();
+        if($user_contract)
+        {
+            return response()->json([
+                'status' => true,
+                'data' => $user_contract,
+            ]);
+
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Not Found Contracts By This User.',
+            ]);
+        }
+    }
+
+
+
+
+        // user requests
+        public function user_requests()
+        {
+            $user_requests = ModelsRequest::where('user_id', auth()->user()->id)->get();
+            if($user_requests)
+            {
+                return response()->json([
+                    'status' => true,
+                    'data' => $user_requests,
+                ]);
+
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Not Found Requests By This User.',
+                ]);
+            }
+        }
+
+
+
+        // user documents
+        public function user_documents()
+        {
+            $user_documents = UserDocument::where('user_id', auth()->user()->id)->get();
+            if($user_documents)
+            {
+                return response()->json([
+                    'status' => true,
+                    'data' => $user_documents,
+                ]);
+
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Not Found Documents By This User.',
+                ]);
+            }
+        }
+
+
 }

@@ -29,13 +29,14 @@
                                 <form class="theme-form mega-form">
                                     <div class="mb-3">
                                         <label class="col-form-label">Name</label>
-                                        <input class="form-control disabled" type="text" name="name" value="{{$flat->name}}" placeholder="Enter Name" />
+                                        <input class="form-control" disabled type="text" name="name"
+                                            value="{{ $flat->name }}" placeholder="Enter Name" />
 
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">property</label>
-                                        <select class="form-select digits disabled" name="property_id"
+                                        <select class="form-select digits" disabled name="property_id"
                                             id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($properties as $property)
@@ -50,14 +51,14 @@
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Floor Number</label>
-                                        <input class="form-control disabled" type="number" name="floor_number"
+                                        <input class="form-control" disabled type="number" name="floor_number"
                                             value="{{ $flat->floor_number }}" placeholder="Floor Number" />
 
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Distance</label>
-                                        <input class="form-control disabled" type="text" name="distance"
+                                        <input class="form-control" disabled type="text" name="distance"
                                             value="{{ $flat->distance }}" placeholder="Enter Distance" />
 
                                     </div>
@@ -66,7 +67,7 @@
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Rent Amount</label>
-                                        <input class="form-control disabled" type="Number" name="rent_amount"
+                                        <input class="form-control" disabled type="Number" name="rent_amount"
                                             value="{{ $flat->rent_amount }}" placeholder="Enter Rent Amount" />
                                     </div>
                                 </form>

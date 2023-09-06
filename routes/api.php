@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ContractController;
 use App\Http\Controllers\Api\FlatController;
 use App\Http\Controllers\Api\PropertyController;
 use App\Http\Controllers\Api\UserController;
@@ -21,6 +23,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::get('/user_contracts', [UserController::class, 'user_contracts']);
+    Route::get('/user_requests', [UserController::class, 'user_requests']);
+    Route::get('/user_documents', [UserController::class, 'user_documents']);
+
+
+});
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
 
 

@@ -31,21 +31,24 @@
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Name Ar</label>
-                                        <input class="form-control disabled" type="text" name="name_ar" value="{{service->name_ar}}" placeholder="Enter Name Ar" />
+                                        <input class="form-control" disabled type="text" name="name_ar"
+                                            value="{{ $service->name_ar }}" placeholder="Enter Name Ar" />
 
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Name En</label>
-                                        <input class="form-control disabled" type="text" name="name_en" value="{{service->name_en}}" placeholder="Enter Name En" />
+                                        <input class="form-control" disabled type="text" name="name_en"
+                                            value="{{ $service->name_en }}" placeholder="Enter Name En" />
 
                                     </div>
 
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Image</label>
-                                        <input class="form-control disabled" type="file" name="image" />
-                                        <img src="{{asset('storage/services/'.$service->image)}}" width="150px" class="image_thumbnail image-preview" alt="">
+                                        <input class="form-control" disabled type="file" name="image" />
+                                        <img src="{{ asset('storage/services/' . $service->image) }}" width="150px"
+                                            class="image_thumbnail image-preview" alt="">
                                     </div>
 
                                 </form>

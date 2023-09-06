@@ -42,7 +42,7 @@
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $user->name}}</td>
+                                            <td>{{ $user->name }}</td>
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->passport_id }}</td>
                                             <td>{{ $user->nationalty }}</td>
@@ -54,6 +54,9 @@
                                             <td>{{ $user->type }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
+                                                    <a href="{{ route('show.user', $user->id) }}" class="btn btn-primary"><i
+                                                            class="fa fa-eye"></i> Show</a>
+
                                                     <a href="{{ route('edit.user', $user->id) }}" class="btn btn-primary"><i
                                                             class="fa fa-edit"></i> Edit</a>
                                                     <form method="post" action="{{ route('delete.user', $user->id) }}">
@@ -61,7 +64,8 @@
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit"
                                                             class="btn btn-danger  show_confirm btn-xs"><i
-                                                                class="fa fa-trash" data-toggle="tooltip" title='Delete'></i>Delete</button>
+                                                                class="fa fa-trash" data-toggle="tooltip"
+                                                                title='Delete'></i>Delete</button>
                                                     </form>
 
                                                 </div>
