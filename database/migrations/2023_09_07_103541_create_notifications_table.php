@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('flat_id');
-            $table->foreign('flat_id')->references('id')->on('flats')->onDelete('cascade');
-            $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
-            $table->date('date');
-            $table->enum('status', ['active', 'inactive']);
-            $table->double('amount')->nullable();
+            $table->unsignedBigInteger('object_id');
+            $table->enum('type', ['request', 'contract']);
+            $table->string('title_ar');
+            $table->string('title_en');
+            $table->string('description_ar');
+            $table->string('description_en');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('notifications');
     }
 };

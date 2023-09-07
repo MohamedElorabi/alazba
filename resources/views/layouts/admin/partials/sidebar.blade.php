@@ -143,6 +143,25 @@
 
                         </ul>
                     </li>
+
+
+                    {{-- invoices --}}
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/invoices') }}" href="javascript:void(0)"><i
+                                data-feather="file-text"></i><span>Invoices</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/invoices') }};">
+                            <li><a href="{{ route('invoices') }}"
+                                    class="{{ routeActive('state-color') }}">invoices</a></li>
+                            <li><a href="{{ route('create.invoice') }}"class="{{ routeActive('typography') }}">create
+                                    invoice</a></li>
+
+                        </ul>
+                    </li>
+
+
+
+
+
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

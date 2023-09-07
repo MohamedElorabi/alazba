@@ -16,6 +16,7 @@ class Request extends Model
         'service_id',
         'date',
         'status',
+        'amount'
     ];
 
 

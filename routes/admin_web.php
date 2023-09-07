@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ContractController;
 use App\Http\Controllers\Admin\FlatController;
+use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyDocumentController;
 use App\Http\Controllers\Admin\RequestController;
@@ -116,3 +117,17 @@ Route::prefix('requests')->group(function () {
     Route::delete('/delete/{id}', [RequestController::class, 'destroy'])->name('delete.request');
 });
 
+
+
+
+
+// invoices
+Route::prefix('invoices')->group(function () {
+	Route::get('/', [InvoiceController::class, 'index'])->name('invoices');
+    Route::get('/create', [InvoiceController::class, 'create'])->name('create.invoice');
+    Route::get('/show/{id}', [InvoiceController::class, 'show'])->name('show.invoice');
+    Route::post('/store', [InvoiceController::class, 'store'])->name('store.invoice');
+    Route::get('/edit/{id}', [InvoiceController::class, 'edit'])->name('edit.invoice');
+    Route::post('/update/{id}', [InvoiceController::class, 'update'])->name('update.invoice');
+    Route::delete('/delete/{id}', [InvoiceController::class, 'destroy'])->name('delete.invoice');
+});

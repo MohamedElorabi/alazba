@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('flat_id');
-            $table->foreign('flat_id')->references('id')->on('flats')->onDelete('cascade');
-            $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
-            $table->date('date');
+            $table->double('total');
+            $table->double('paid');
+            $table->double('debit');
             $table->enum('status', ['active', 'inactive']);
-            $table->double('amount')->nullable();
+            $table->date('date');
+            $table->date('expiry_date');
+            $table->string('method');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('invoices');
     }
 };
