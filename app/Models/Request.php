@@ -34,4 +34,11 @@ class Request extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+
+
+    public function invoice_items()
+    {
+        return $this->morphMany(InvoiceItem::class , 'object');
+    }
 }

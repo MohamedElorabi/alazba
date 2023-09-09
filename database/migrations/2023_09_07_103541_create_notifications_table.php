@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('object_id');
-            $table->enum('type', ['request', 'contract']);
+            $table->morphs('object');
             $table->string('title_ar');
             $table->string('title_en');
             $table->string('description_ar');

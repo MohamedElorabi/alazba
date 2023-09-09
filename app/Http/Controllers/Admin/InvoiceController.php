@@ -33,7 +33,16 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = [
+            'user_id' => $request->user_id,
+            'total' => $request->total,
+            'paid' => $request->paid,
+            'debit' => $request->debit,
+            'status' => $request->status,
+            'date' => $request->date,
+            'expiry_date' => $request->expiry_date,
+            'payment_method_id' => $request->payment_method_id,
+        ];
         Invoice::create($data);
         Session::flash('success','Created successfully!');
         return redirect(route('invoices'));
@@ -53,7 +62,9 @@ class InvoiceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $invoice = Invoice::find($id);
+        $users = User::all();
+        return view('admin.invoices.edit', compact('invoice','users'));
     }
 
     /**
@@ -61,7 +72,27 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $invoice = Invoice::find($id);
+
+        $data = [
+            'user_id' => $request->user_id,
+            'total' => $request->total,
+            'paid' => $request->paid,
+            'debit' => $request->debit,
+            'status' => $request->status,
+            'date' => $request->date,
+            'expiry_date' => $request->expiry_date,
+            'payment_method_id' => $request->payment_method_id,
+        ];
+
+        $invoice->update($data);
+
+        Session::flash('success','Updated successfully!');
+
+        return redirect(route('invoices'));
+
+
     }
 
     /**
@@ -69,6 +100,10 @@ class InvoiceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $invoice = Invoice::findOrFail($id);
+        $invoice->delete();
+
+        Session::flash('success','Deleted successfully!');
+        return redirect(route('invoices'));
     }
 }

@@ -21,7 +21,8 @@ return new class extends Migration
             $table->enum('status', ['active', 'inactive']);
             $table->date('date');
             $table->date('expiry_date');
-            $table->string('method');
+            $table->unsignedBigInteger('payment_method_id');
+            $table->foreign('payment_method_id')->references('id')->on('payment_methods')->onDelete('cascade');
             $table->timestamps();
         });
     }

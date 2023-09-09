@@ -154,7 +154,20 @@
                                     class="{{ routeActive('state-color') }}">invoices</a></li>
                             <li><a href="{{ route('create.invoice') }}"class="{{ routeActive('typography') }}">create
                                     invoice</a></li>
+                        </ul>
+                    </li>
 
+
+
+                     {{-- payment methods --}}
+                     <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/payment_methods') }}" href="javascript:void(0)"><i
+                                data-feather="file-text"></i><span>Payment Methods</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/payment_methods') }};">
+                            <li><a href="{{ route('payment_methods') }}"
+                                    class="{{ routeActive('state-color') }}">payment_methods</a></li>
+                            <li><a href="{{ route('create.payment_method') }}"class="{{ routeActive('typography') }}">create
+                                payment_method</a></li>
                         </ul>
                     </li>
 

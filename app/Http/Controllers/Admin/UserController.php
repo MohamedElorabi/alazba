@@ -107,7 +107,7 @@ class UserController extends Controller
             $user->update($request->except('image'));
 
             Session::flash('success','Updated successfully!');
-            return redirect(route('users'))->with('success', 'Updated successfully!');;
+            return redirect(route('users'))->with('success', 'Updated successfully!');
 
     }
 

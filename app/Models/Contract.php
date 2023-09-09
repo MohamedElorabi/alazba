@@ -36,4 +36,13 @@ class Contract extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
+
+    public function invoice_items()
+    {
+        return $this->morphMany(InvoiceItem::class , 'object');
+    }
+
+
 }

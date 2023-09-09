@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ContractController;
 use App\Http\Controllers\Admin\FlatController;
 use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\PaymentMethodController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyDocumentController;
 use App\Http\Controllers\Admin\RequestController;
@@ -130,4 +131,17 @@ Route::prefix('invoices')->group(function () {
     Route::get('/edit/{id}', [InvoiceController::class, 'edit'])->name('edit.invoice');
     Route::post('/update/{id}', [InvoiceController::class, 'update'])->name('update.invoice');
     Route::delete('/delete/{id}', [InvoiceController::class, 'destroy'])->name('delete.invoice');
+});
+
+
+
+// payment_methods
+Route::prefix('payment_methods')->group(function () {
+	Route::get('/', [PaymentMethodController::class, 'index'])->name('payment_methods');
+    Route::get('/create', [PaymentMethodController::class, 'create'])->name('create.payment_method');
+    Route::get('/show/{id}', [PaymentMethodController::class, 'show'])->name('show.payment_method');
+    Route::post('/store', [PaymentMethodController::class, 'store'])->name('store.payment_method');
+    Route::get('/edit/{id}', [PaymentMethodController::class, 'edit'])->name('edit.payment_method');
+    Route::post('/update/{id}', [PaymentMethodController::class, 'update'])->name('update.payment_method');
+    Route::delete('/delete/{id}', [PaymentMethodController::class, 'destroy'])->name('delete.payment_method');
 });

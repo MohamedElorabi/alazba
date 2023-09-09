@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Show Contract
+    Show Invoice
     {{-- {{ $title }} --}}
 @endsection
 
@@ -11,10 +11,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Show Contract</h3>
+            <h3>Show Invoice</h3>
         @endslot
-        <li class="breadcrumb-item">Contracts</li>
-        <li class="breadcrumb-item active">Show Contract</li>
+        <li class="breadcrumb-item">Invoices</li>
+        <li class="breadcrumb-item active">Show Invoice</li>
     @endcomponent
 
     <div class="container-fluid">
@@ -27,86 +27,96 @@
 
                             <div class="card-body">
                                 <form class="theme-form mega-form">
+
+
                                     <div class="mb-3">
                                         <label class="form-label" for="exampleFormControlSelect9">User</label>
-                                        <select class="form-select digits" name="user_id" id="exampleFormControlSelect9"
-                                            disabled>
+                                        <select class="form-select digits" disabled name="user_id" id="exampleFormControlSelect9">
                                             <option value="">------</option>
                                             @foreach ($users as $user)
-                                                <option value="{{ $user->id }}"
-                                                    {{ $user->id == $contract->user_id ? 'selected' : '' }}>
-                                                    {{ $user->name }}
-                                                </option>
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
                                             @endforeach
                                         </select>
 
-                                    </div>
-
-
-                                    <div class="mb-3">
-                                        <label class="form-label" for="exampleFormControlSelect9">Flat</label>
-                                        <select class="form-select digits" name="flat_id" id="exampleFormControlSelect9"
-                                            disabled>
-                                            <option value="">------</option>
-                                            @foreach ($flats as $flat)
-                                                <option value="{{ $flat->id }}"
-                                                    {{ $flat->id == $contract->flat_id ? 'selected' : '' }}>
-                                                    {{ $flat->name }}</option>
-                                            @endforeach
-                                        </select>
-
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label" for="exampleFormControlSelect9">property</label>
-                                        <select class="form-select digits" name="property_id" id="exampleFormControlSelect9"
-                                            disabled>
-                                            <option value="">------</option>
-                                            @foreach ($properties as $property)
-                                                <option value="{{ $property->id }}"
-                                                    {{ $property->id == $contract->property_id ? 'selected' : '' }}>
-                                                    {{ $property->name }}</option>
-                                            @endforeach
-                                        </select>
-
-                                    </div>
-
-
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Start Date</label>
-                                        <input class="form-control" type="date" name="start_date"
-                                            value="{{ $contract->start_date }}" disabled placeholder="Enter Start Date" />
-                                    </div>
-
-
-                                    <div class="mb-3">
-                                        <label class="col-form-label">End Date</label>
-                                        <input class="form-control" type="date" name="end_date"
-                                            value="{{ $contract->end_date }}" disabled placeholder="Enter End Date" />
-                                        @error('end_date')
+                                        @error('user_id')
                                             <span class=" text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label class="form-label" for="exampleFormControlSelect9">Status</label>
-                                        <select class="form-select digits" name="status" id="exampleFormControlSelect9"
-                                            disabled>
-                                            <option value="">-- choose status ----</option>
-                                            <option value="active" @if ($contract->status == 'active') selected @endif>Active
-                                            </option>
-                                            <option value="inactive" @if ($contract->stuts == 'inactive') selected @endif>
-                                                InActive</option>
-                                        </select>
 
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Total</label>
+                                        <input class="form-control" disabled value="{{$payment_method->total}}" type="number" name="total"
+                                            placeholder="Enter Total" />
+                                        @error('total')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Paid</label>
+                                        <input class="form-control" disabled value="{{$payment_method->paid}}" type="number" name="paid"
+                                            placeholder="Enter Paid" />
+                                        @error('paid')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Debit</label>
+                                        <input class="form-control" disabled type="number" value="{{$payment_method->debit}}" name="debit"
+                                            placeholder="Enter Debit" />
+                                        @error('debit')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
 
 
                                     <div class="mb-3">
-                                        <label class="col-form-label">Amount</label>
-                                        <input class="form-control" disabled type="Number" name="amount"
-                                            value="{{ $contract->amount }}" placeholder="Enter Amount" />
+                                        <label class="form-label" for="exampleFormControlSelect9">Status</label>
+                                        <select class="form-select digits" disabled name="status" id="exampleFormControlSelect9">
+                                            <option value="">-- choose status ----</option>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">InActive</option>
+                                        </select>
+                                        @error('status')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
+
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Date</label>
+                                        <input class="form-control" disabled type="date" value="{{$payment_method->date}}" name="date"
+                                            placeholder="Enter Date" />
+                                        @error('date')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label class="col-form-label">ExpiryDate</label>
+                                        <input class="form-control" disabled type="date" value="{{$payment_method->expiry_date}}" name="expiry_date"
+                                            placeholder="Enter ExpiryDate" />
+                                        @error('expiry_date')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Method</label>
+                                        <input class="form-control" disabled type="string" name="method"
+                                            placeholder="Enter Method" />
+
+                                        @error('method')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                 </form>

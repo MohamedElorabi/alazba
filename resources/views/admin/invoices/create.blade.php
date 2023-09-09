@@ -89,7 +89,6 @@
 
 
 
-
                                     <div class="mb-3">
                                         <label class="col-form-label">Date</label>
                                         <input class="form-control" type="date" name="date"
@@ -119,6 +118,8 @@
                                             <span class=" text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
+
+                                    
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                         <button class="btn btn-secondary">Cancel</button>
