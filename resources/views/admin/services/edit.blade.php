@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Edit Contract
+    Edit Service
     {{-- {{ $title }} --}}
 @endsection
 

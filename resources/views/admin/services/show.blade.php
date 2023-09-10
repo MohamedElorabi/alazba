@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Show Contract
+    Show Service
     {{-- {{ $title }} --}}
 @endsection
 

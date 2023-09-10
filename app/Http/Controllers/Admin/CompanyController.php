@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -53,7 +54,8 @@ class CompanyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return view('admin.companies.show', compact('company'));
     }
 
     /**
@@ -61,7 +63,8 @@ class CompanyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return view('admin.compaines.edit', compact('company'));
     }
 
     /**
@@ -69,7 +72,31 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $data = [
+            'name' => $request->name,
+        ];
+
+
+        if($request->hasFile('logo'))
+        {
+            $logo = $request->file('logo');
+            $file_name = rand() . '.' . $logo->getClientOriginalExtension();
+            if($company->logo)
+            {
+                Storage::delete('public/companies/' . $company->logo);
+            }
+            $path = $logo->storeAs('public/companies',$file_name);
+
+            $company['logo'] = $file_name;
+
+        }
+
+        $company->update($request->except('logo'));
+
+        Session::flash('success','Updated successfully!');
+
+        return redirect(route('companies'));
     }
 
     /**
@@ -77,6 +104,10 @@ class CompanyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $company->delete();
+
+        Session::flash('success','Deleted successfully!');
+        return redirect(route('companies'));
     }
 }

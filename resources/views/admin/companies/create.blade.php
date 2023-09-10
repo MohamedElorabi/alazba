@@ -31,25 +31,17 @@
 
 
                                     <div class="mb-3">
-                                        <label class="col-form-label">Name Ar</label>
-                                        <input class="form-control" type="text" name="name_ar" placeholder="Enter Name Ar" />
-                                        @error('name_ar')
-                                            <span class=" text-danger">{{$message}}</span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Name En</label>
-                                        <input class="form-control" type="text" name="name_en" placeholder="Enter Name En" />
-                                        @error('name_en')
+                                        <label class="col-form-label">Name</label>
+                                        <input class="form-control" type="text" name="name" placeholder="Enter Name Ar" />
+                                        @error('name')
                                             <span class=" text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
 
 
                                     <div class="mb-3">
-                                        <label class="col-form-label">Image</label>
-                                        <input class="form-control" type="file" name="image" />
+                                        <label class="col-form-label">Logo</label>
+                                        <input class="form-control" type="file" name="logo" />
                                     </div>
 
 

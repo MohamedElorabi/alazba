@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Services
+    Companies
     {{-- {{ $title }} --}}
 @endsection
 
@@ -13,9 +13,9 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Services</h3>
+            <h3>Companies</h3>
         @endslot
-        <li class="breadcrumb-item active">Services</li>
+        <li class="breadcrumb-item active">Companies</li>
     @endcomponent
 
     <div class="container-fluid">
@@ -30,32 +30,33 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Image</th>
+                                        <th>Log</th>
+                                        <th>Slug</th>
 
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($services as $service)
+                                    @foreach ($compaines as $company)
                                         <tr>
-                                            <td>{{ $service->name }}</td>
+                                            <td>{{ $company->name }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/services/' . $service->image) }}" width="150px"
+                                                <img src="{{ asset('storage/compaines/' . $company->image) }}" width="150px"
                                                     class="image_thumbnail image-preview" alt="">
                                             </td>
 
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
 
-                                                    <a href="{{ route('show.service', $service->id) }}"
+                                                    <a href="{{ route('show.company', $company->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-eye"></i> Show</a>
 
 
-                                                    <a href="{{ route('edit.service', $service->id) }}"
+                                                    <a href="{{ route('edit.company', $company->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
 
                                                     <form method="post"
-                                                        action="{{ route('delete.service', $service->id) }}">
+                                                        action="{{ route('delete.company', $company->id) }}">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit"

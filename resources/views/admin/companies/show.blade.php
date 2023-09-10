@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Show Contract
+    Show Company
     {{-- {{ $title }} --}}
 @endsection
 
@@ -11,10 +11,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Show Service</h3>
+            <h3>Show Company</h3>
         @endslot
-        <li class="breadcrumb-item">Services</li>
-        <li class="breadcrumb-item active">Show Service</li>
+        <li class="breadcrumb-item">Companies</li>
+        <li class="breadcrumb-item active">Show Company</li>
     @endcomponent
 
     <div class="container-fluid">
@@ -30,24 +30,17 @@
                                     @csrf
 
                                     <div class="mb-3">
-                                        <label class="col-form-label">Name Ar</label>
-                                        <input class="form-control" disabled type="text" name="name_ar"
-                                            value="{{ $service->name_ar }}" placeholder="Enter Name Ar" />
-
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Name En</label>
-                                        <input class="form-control" disabled type="text" name="name_en"
-                                            value="{{ $service->name_en }}" placeholder="Enter Name En" />
+                                        <label class="col-form-label">Name</label>
+                                        <input class="form-control" disabled type="text" name="name"
+                                            value="{{ $company->name }}" placeholder="Enter Name" />
 
                                     </div>
 
 
                                     <div class="mb-3">
-                                        <label class="col-form-label">Image</label>
-                                        <input class="form-control" disabled type="file" name="image" />
-                                        <img src="{{ asset('storage/services/' . $service->image) }}" width="150px"
+                                        <label class="col-form-label">Logo</label>
+                                        <input class="form-control" disabled type="file" name="logo" />
+                                        <img src="{{ asset('storage/companies/' . $company->image) }}" width="150px"
                                             class="image_thumbnail image-preview" alt="">
                                     </div>
 
