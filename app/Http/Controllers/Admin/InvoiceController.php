@@ -54,7 +54,8 @@ class InvoiceController extends Controller
     public function show(string $id)
     {
         $invoice = Invoice::find($id);
-        return view('admin.invoices.show', compact('invoice'));
+        $users = User::all();
+        return view('admin.invoices.show', compact('invoice', 'users'));
     }
 
     /**

@@ -18,7 +18,7 @@ class InvoiceItem extends Model
     }
 
 
-    public function item()
+    public function object()
     {
         return $this->morphTo();
     }

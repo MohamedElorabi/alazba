@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('image');
             $table->enum('status', ['active', 'inactive']);
             $table->string('type');
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

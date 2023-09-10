@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Invoices
+    Services
     {{-- {{ $title }} --}}
 @endsection
 
@@ -13,9 +13,9 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Invoices</h3>
+            <h3>Services</h3>
         @endslot
-        <li class="breadcrumb-item active">Invoices</li>
+        <li class="breadcrumb-item active">Services</li>
     @endcomponent
 
     <div class="container-fluid">
@@ -29,37 +29,33 @@
                             <table class="display" id="basic-2">
                                 <thead>
                                     <tr>
-                                        <th>User</th>
-                                        <th>Total</th>
-                                        <th>Paid</th>
-                                        <th>Debit</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                        <th>Expiry Date</th>
-                                        <th>Payment Method</th>
+                                        <th>Name</th>
+                                        <th>Image</th>
+
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($invoices as $invoice)
+                                    @foreach ($services as $service)
                                         <tr>
-                                            <td>{{ $invoice->user->name }}</td>
-                                            <td>{{ $invoice->total }}</td>
-                                            <td>{{ $invoice->paid }}</td>
-                                            <td>{{ $invoice->debit }}</td>
-                                            <td>{{ $invoice->status }}</td>
-                                            <td>{{ $invoice->date }}</td>
-                                            <td>{{ $invoice->expiry_date }}</td>
-                                            <td>{{ $invoice->payment_method->name_en }}</td>
+                                            <td>{{ $service->name }}</td>
+                                            <td>
+                                                <img src="{{ asset('storage/services/' . $service->image) }}" width="150px"
+                                                    class="image_thumbnail image-preview" alt="">
+                                            </td>
+
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
-                                                    <a href="{{ route('show.invoice', $invoice->id) }}"
-                                                        class="btn btn-success"><i class="fa fa-eye"></i> Show</a>
 
-                                                    <a href="{{ route('edit.invoice', $invoice->id) }}"
+                                                    <a href="{{ route('show.service', $service->id) }}"
+                                                        class="btn btn-primary"><i class="fa fa-eye"></i> Show</a>
+
+
+                                                    <a href="{{ route('edit.service', $service->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+
                                                     <form method="post"
-                                                        action="{{ route('delete.invoice', $invoice->id) }}">
+                                                        action="{{ route('delete.service', $service->id) }}">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit"

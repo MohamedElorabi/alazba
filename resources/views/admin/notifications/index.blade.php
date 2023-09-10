@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Invoices
+    Notifications
     {{-- {{ $title }} --}}
 @endsection
 
@@ -13,9 +13,9 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Invoices</h3>
+            <h3>Notifications</h3>
         @endslot
-        <li class="breadcrumb-item active">Invoices</li>
+        <li class="breadcrumb-item active">Notifications</li>
     @endcomponent
 
     <div class="container-fluid">
@@ -30,36 +30,25 @@
                                 <thead>
                                     <tr>
                                         <th>User</th>
-                                        <th>Total</th>
-                                        <th>Paid</th>
-                                        <th>Debit</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                        <th>Expiry Date</th>
-                                        <th>Payment Method</th>
+                                        <th>Object</th>
+                                        <th>type</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($invoices as $invoice)
+                                    @foreach ($notifications as $notification)
                                         <tr>
-                                            <td>{{ $invoice->user->name }}</td>
-                                            <td>{{ $invoice->total }}</td>
-                                            <td>{{ $invoice->paid }}</td>
-                                            <td>{{ $invoice->debit }}</td>
-                                            <td>{{ $invoice->status }}</td>
-                                            <td>{{ $invoice->date }}</td>
-                                            <td>{{ $invoice->expiry_date }}</td>
-                                            <td>{{ $invoice->payment_method->name_en }}</td>
+                                            <td>{{ $notification->user->name }}</td>
+                                            <td>{{ $notification->object_id }}</td>
+                                            <td>{{ $notification->type }}</td>
+                                            <td>{{ $notification->title }}</td>
+                                            <td>{{ $notification->description }}</td>
                                             <td>
-                                                <div class="d-flex align-items-center gap-3">
-                                                    <a href="{{ route('show.invoice', $invoice->id) }}"
-                                                        class="btn btn-success"><i class="fa fa-eye"></i> Show</a>
-
-                                                    <a href="{{ route('edit.invoice', $invoice->id) }}"
-                                                        class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                                                <div class="d-flex align-notifications-center gap-3">
                                                     <form method="post"
-                                                        action="{{ route('delete.invoice', $invoice->id) }}">
+                                                        action="{{ route('delete.notification', $notification->id) }}">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit"

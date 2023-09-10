@@ -159,19 +159,29 @@
 
 
 
-                     {{-- payment methods --}}
-                     <li class="dropdown">
-                        <a class="nav-link menu-title {{ prefixActive('/payment_methods') }}" href="javascript:void(0)"><i
-                                data-feather="file-text"></i><span>Payment Methods</span></a>
+                    {{-- payment methods --}}
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/payment_methods') }}"
+                            href="javascript:void(0)"><i data-feather="file-text"></i><span>Payment Methods</span></a>
                         <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/payment_methods') }};">
                             <li><a href="{{ route('payment_methods') }}"
                                     class="{{ routeActive('state-color') }}">payment_methods</a></li>
-                            <li><a href="{{ route('create.payment_method') }}"class="{{ routeActive('typography') }}">create
-                                payment_method</a></li>
+                            <li><a
+                                    href="{{ route('create.payment_method') }}"class="{{ routeActive('typography') }}">create
+                                    payment_method</a></li>
                         </ul>
                     </li>
 
 
+                    {{-- notifications --}}
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/notifications') }}"
+                            href="javascript:void(0)"><i data-feather="file-text"></i><span>Notifications</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/notifications') }};">
+                            <li><a href="{{ route('notifications') }}"
+                                    class="{{ routeActive('state-color') }}">notifications</a></li>
+                        </ul>
+                    </li>
 
 
 

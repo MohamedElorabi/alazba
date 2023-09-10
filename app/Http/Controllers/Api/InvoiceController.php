@@ -16,7 +16,16 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        $invoices = Invoice::select('id', 'user_id', 'total', 'paid', 'debit', 'status', 'date', 'expiry_date', 'payment_method_id')->with('invoice_items')->get();
+        if(count($invoices) > 0 )
+        {
+            return response()->json([
+                'data' => $invoices
+            ]);
+        }
+        return response()->json([
+            'message' => 'no record found'
+        ]);
     }
 
     /**
@@ -24,6 +33,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $invoice = new Invoice();
         $invoice->user_id = auth()->user()->id;
         $invoice->total = $request->total;
@@ -31,6 +41,7 @@ class InvoiceController extends Controller
         $invoice->debit = $request->debit;
         $invoice->status = $request->status;
         $invoice->date = $request->date;
+        $invoice->expiry_date = $request->expiry_date;
         $invoice->payment_method_id = $request->payment_method_id;
         $invoice->save();
 
@@ -45,16 +56,17 @@ class InvoiceController extends Controller
                 $item = ModelsRequest::findOrFail($itemIds[$index]);
             }
 
-            // Create an order item
+            // Create an invoice item
             $invoiceItem = new InvoiceItem();
             $invoiceItem->invoice_id = $invoice->id;
-            $invoiceItem->item_price = $itemPrices[$index];
-            $invoiceItem->item()->associate($item);
+            $invoiceItem->price = $itemPrices[$index];
+            $invoiceItem->type = $types[$index];
+            $invoiceItem->object()->associate($item);
             $invoiceItem->save();
         }
         return response()->json([
             'status' => true,
-            'message' => 'Order Created Successfully.',
+            'message' => 'Invoice Created Successfully.',
         ]);
     }
 
@@ -63,7 +75,20 @@ class InvoiceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $invoice = Invoice::with('invoice_items')->find($id);
+        if($invoice)
+        {
+            return response()->json([
+                'status' => true,
+                'data' => $invoice,
+            ]);
+
+        }else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Id Not Found',
+            ]);
+        }
     }
 
     /**
@@ -79,6 +104,11 @@ class InvoiceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $invoice = Invoice::findOrFail($id);
+        $invoice->delete();
+        return response()->json([
+            'status' => true,
+            'message' => 'Data Deleted Successfully.',
+        ]);
     }
 }

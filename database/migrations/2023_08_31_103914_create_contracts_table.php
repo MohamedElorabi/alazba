@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('end_date');
             $table->enum('status', ['active', 'inactive']);
             $table->double('amount');
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->timestamps();
         });
     }

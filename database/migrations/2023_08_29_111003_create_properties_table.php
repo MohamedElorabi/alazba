@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->integer('floors_count');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->timestamps();
         });
     }

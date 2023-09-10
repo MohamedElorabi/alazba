@@ -22,6 +22,8 @@ return new class extends Migration
             $table->date('date');
             $table->enum('status', ['active', 'inactive']);
             $table->double('amount')->nullable();
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->timestamps();
         });
     }

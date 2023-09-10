@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ContractController;
 use App\Http\Controllers\Admin\FlatController;
 use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\PaymentMethodController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyDocumentController;
@@ -144,4 +145,12 @@ Route::prefix('payment_methods')->group(function () {
     Route::get('/edit/{id}', [PaymentMethodController::class, 'edit'])->name('edit.payment_method');
     Route::post('/update/{id}', [PaymentMethodController::class, 'update'])->name('update.payment_method');
     Route::delete('/delete/{id}', [PaymentMethodController::class, 'destroy'])->name('delete.payment_method');
+});
+
+
+
+// notifications
+Route::prefix('notifications')->group(function () {
+	Route::get('/', [NotificationController::class, 'index'])->name('notifications');
+    Route::delete('/delete/{id}', [NotificationController::class, 'destroy'])->name('delete.notification');
 });

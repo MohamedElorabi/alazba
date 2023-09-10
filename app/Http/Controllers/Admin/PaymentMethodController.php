@@ -100,7 +100,7 @@ class PaymentMethodController extends Controller
         $payment_method->update($request->except('image'));
 
         Session::flash('success','Updated successfully!');
-        return redirect(route('users'))->with('success', 'Updated successfully!');
+        return redirect(route('payment_methods'))->with('success', 'Updated successfully!');
     }
 
     /**
