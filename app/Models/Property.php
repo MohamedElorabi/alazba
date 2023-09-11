@@ -14,6 +14,8 @@ class Property extends Model
         'name',
         'address',
         'floors_count',
+        'user_id',
+        'company_id'
     ];
 
     public function property_document()
@@ -30,6 +32,18 @@ class Property extends Model
     public function contracts()
     {
         return $this->hasMany(Contract::class);
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 
 }

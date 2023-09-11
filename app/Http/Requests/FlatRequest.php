@@ -24,7 +24,7 @@ class FlatRequest extends FormRequest
         return [
             'name' => 'required',
             'property_id' => 'required',
-            'floor_number' => 'required|number',
+            'floor_number' => 'required',
             'distance' => 'required',
             'rent_amount' => 'required',
         ];

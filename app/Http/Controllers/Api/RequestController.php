@@ -27,6 +27,7 @@ class RequestController extends Controller
             'service_id' => $request->service_id,
             'date' => $request->date,
             'status' => $request->status,
+            'company_id' => $request->company_id,
         ]);
 
         return response()->json([

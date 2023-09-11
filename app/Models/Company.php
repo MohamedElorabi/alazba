@@ -20,8 +20,40 @@ class Company extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'name'
             ]
         ];
     }
+
+
+
+    public function property()
+    {
+        return $this->hasMany(Property::class);
+    }
+
+
+
+    public function request()
+    {
+        return $this->hasMany(Request::class);
+    }
+
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
+
+
+    public function invoice()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function contract()
+    {
+        return $this->hasMany(Contract::class);
+    }
+
 }

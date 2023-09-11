@@ -176,10 +176,25 @@
                     {{-- notifications --}}
                     <li class="dropdown">
                         <a class="nav-link menu-title {{ prefixActive('/notifications') }}"
-                            href="javascript:void(0)"><i data-feather="file-text"></i><span>Notifications</span></a>
+                            href="javascript:void(0)"><i data-feather="framer"></i><span>Notifications</span></a>
                         <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/notifications') }};">
                             <li><a href="{{ route('notifications') }}"
                                     class="{{ routeActive('state-color') }}">notifications</a></li>
+                        </ul>
+                    </li>
+
+
+
+                    {{-- companies --}}
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/companies') }}" href="javascript:void(0)"><i
+                                data-feather="file-text"></i><span>Companies</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/companies') }};">
+                            <li><a href="{{ route('companies') }}"
+                                    class="{{ routeActive('state-color') }}">companies</a></li>
+
+                            <li><a href="{{ route('create.company') }}"class="{{ routeActive('typography') }}">create
+                                    company</a></li>
                         </ul>
                     </li>
 

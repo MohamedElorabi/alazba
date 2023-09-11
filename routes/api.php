@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\ContractController;
 use App\Http\Controllers\Api\FlatController;
 use App\Http\Controllers\Api\InvoiceController;
@@ -78,6 +79,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // notifications
     Route::post('/notification/store', [NotificationController::class, 'store']);
+
+
+    // companies
+    Route::get('/companies', [CompanyController::class, 'index']);
+    Route::get('/company/show/{id}', [CompanyController::class, 'show']);
+    Route::post('/company/store', [CompanyController::class, 'store']);
+    Route::post('/company/update/{id}', [CompanyController::class, 'update']);
+    Route::delete('/company/delete/{id}', [CompanyController::class, 'destroy']);
 
 });
 

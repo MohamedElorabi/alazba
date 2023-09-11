@@ -36,6 +36,7 @@
                                         <th>Image</th>
                                         <th>Status</th>
                                         <th>Type</th>
+                                        <th>Company</th>
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
@@ -52,13 +53,14 @@
                                             </td>
                                             <td>{{ $user->status }}</td>
                                             <td>{{ $user->type }}</td>
+                                            <td>{{ $user->company->name }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
                                                     <a href="{{ route('show.user', $user->id) }}" class="btn btn-primary"><i
                                                             class="fa fa-eye"></i> Show</a>
 
-                                                    <a href="{{ route('edit.user', $user->id) }}" class="btn btn-primary"><i
-                                                            class="fa fa-edit"></i> Edit</a>
+                                                    <a href="{{ route('edit.user', $user->id) }}"
+                                                        class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
                                                     <form method="post" action="{{ route('delete.user', $user->id) }}">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">

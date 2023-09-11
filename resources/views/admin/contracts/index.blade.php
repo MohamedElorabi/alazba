@@ -36,6 +36,7 @@
                                         <th>End Date</th>
                                         <th>Status</th>
                                         <th>Amount</th>
+                                        <th>Company</th>
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
@@ -49,6 +50,7 @@
                                             <td>{{ $contract->end_date }}</td>
                                             <td>{{ $contract->status }}</td>
                                             <td>{{ $contract->amount }}</td>
+                                            <td>{{ $contract->company->name }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
                                                     <a href="{{ route('show.contract', $contract->id) }}"

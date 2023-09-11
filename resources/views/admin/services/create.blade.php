@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Create Contract
+    Create Service
     {{-- {{ $title }} --}}
 @endsection
 
@@ -26,23 +26,26 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <form class="theme-form mega-form" action="{{ route('store.service') }}" method="post" enctype="multipart/form-data">
+                                <form class="theme-form mega-form" action="{{ route('store.service') }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
 
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Name Ar</label>
-                                        <input class="form-control" type="text" name="name_ar" placeholder="Enter Name Ar" />
+                                        <input class="form-control" type="text" name="name_ar"
+                                            placeholder="Enter Name Ar" />
                                         @error('name_ar')
-                                            <span class=" text-danger">{{$message}}</span>
+                                            <span class=" text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Name En</label>
-                                        <input class="form-control" type="text" name="name_en" placeholder="Enter Name En" />
+                                        <input class="form-control" type="text" name="name_en"
+                                            placeholder="Enter Name En" />
                                         @error('name_en')
-                                            <span class=" text-danger">{{$message}}</span>
+                                            <span class=" text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
 
@@ -52,6 +55,9 @@
                                         <input class="form-control" type="file" name="image" />
                                     </div>
 
+                                    @error('image')
+                                        <span class=" text-danger">{{ $message }}</span>
+                                    @enderror
 
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>

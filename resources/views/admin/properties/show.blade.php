@@ -42,8 +42,40 @@
                                 <label class="col-form-label">Floors Count</label>
                                 <input class="form-control" disabled type="Number" name="floors_count"
                                     value="{{ $property->floors_count }}" />
-
                             </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleFormControlSelect9">User</label>
+                                <select class="form-select digits" name="user_id" id="exampleFormControlSelect9">
+                                    <option value="">------</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}"
+                                            {{ $user->id == $property->user_id ? 'selected' : '' }}>
+                                            {{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('user_id')
+                                    <span class=" text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleFormControlSelect9">Company</label>
+                                <select class="form-select digits" name="company_id" id="exampleFormControlSelect9">
+                                    <option value="">------</option>
+                                    @foreach ($companies as $company)
+                                        <option value="{{ $company->id }}"
+                                            {{ $company->id == $property->company_id ? 'selected' : '' }}>
+                                            {{ $company->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('company_id')
+                                    <span class=" text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
                         </form>
                     </div>
                 </div>

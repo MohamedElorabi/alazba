@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContractRequest;
+use App\Models\Company;
 use App\Models\Contract;
 use App\Models\Flat;
 use App\Models\Property;
@@ -30,7 +31,8 @@ class ContractController extends Controller
         $users = User::all();
         $flats = Flat::all();
         $properties = Property::all();
-        return view('admin.contracts.create', compact('properties', 'flats', 'users'));
+        $companies = Company::all();
+        return view('admin.contracts.create', compact('properties', 'flats', 'users', 'companies'));
     }
 
     /**
@@ -46,6 +48,7 @@ class ContractController extends Controller
             'end_date' => $request->end_date,
             'status' => $request->status,
             'amount' => $request->amount,
+            'company_id' => $request->company_id,
         ]);
 
         Session::flash('success','Created successfully!');
@@ -61,7 +64,8 @@ class ContractController extends Controller
         $users = User::all();
         $flats = Flat::all();
         $properties = Property::all();
-        return view('admin.contracts.show', compact('contract','users','flats','properties'));
+        $companies = Company::all();
+        return view('admin.contracts.show', compact('contract','users','flats','companies','properties'));
     }
 
     /**
@@ -73,7 +77,8 @@ class ContractController extends Controller
         $users = User::all();
         $flats = Flat::all();
         $properties = Property::all();
-        return view('admin.contracts.edit', compact('contract','users','flats','properties'));
+        $companies = Company::all();
+        return view('admin.contracts.edit', compact('contract','users','flats','properties', 'companies'));
     }
 
     /**
@@ -90,6 +95,7 @@ class ContractController extends Controller
             'end_date' => $request->end_date,
             'status' => $request->status,
             'amount' => $request->amount,
+            'company_id' => $request->company_id,
         ];
 
         $contract->update($data);

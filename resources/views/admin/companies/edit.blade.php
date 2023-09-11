@@ -26,14 +26,16 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <form class="theme-form mega-form" action="{{ route('update.company', $company->id) }}" method="post" enctype="multipart/form-data">
+                                <form class="theme-form mega-form" action="{{ route('update.company', $company->id) }}"
+                                    method="post" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Name</label>
-                                        <input class="form-control" type="text" name="name" value="{{company->name}}" placeholder="Enter Name Ar" />
-                                         @error('name')
-                                            <span class=" text-danger">{{$message}}</span>
+                                        <input class="form-control" type="text" name="name"
+                                            value="{{ $company->name }}" placeholder="Enter Name Ar" />
+                                        @error('name')
+                                            <span class=" text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
 
@@ -42,7 +44,8 @@
                                     <div class="mb-3">
                                         <label class="col-form-label">Logo</label>
                                         <input class="form-control" type="file" name="logo" />
-                                        <img src="{{asset('storage/companies/'.$company->image)}}" width="150px" class="image_thumbnail image-preview" alt="">
+                                        <img src="{{ asset('storage/companies/' . $company->logo) }}" width="150px"
+                                            class="image_thumbnail image-preview" alt="">
                                     </div>
 
                                     <div class="card-footer">

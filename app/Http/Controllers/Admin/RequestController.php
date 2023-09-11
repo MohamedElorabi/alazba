@@ -43,6 +43,7 @@ class RequestController extends Controller
             'service_id' => $request->service_id,
             'date' => $request->date,
             'status' => $request->status,
+            'company_id' => $request->company_id,
         ]);
 
         Session::flash('success','Created successfully!');
@@ -86,6 +87,7 @@ class RequestController extends Controller
             'service_id' => $request->service_id,
             'date' => $request->date,
             'status' => $request->status,
+            'company_id' => $request->company_id,
         ];
 
 

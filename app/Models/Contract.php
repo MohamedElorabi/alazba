@@ -18,6 +18,7 @@ class Contract extends Model
         'end_date',
         'status',
         'amount',
+        'company_id'
     ];
 
 
@@ -35,6 +36,12 @@ class Contract extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 
 

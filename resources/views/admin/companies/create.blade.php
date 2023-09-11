@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Create Contract
+    Create Company
     {{-- {{ $title }} --}}
 @endsection
 
@@ -11,10 +11,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Create Service</h3>
+            <h3>Create Company</h3>
         @endslot
-        <li class="breadcrumb-item">Services</li>
-        <li class="breadcrumb-item active">Create Service</li>
+        <li class="breadcrumb-item">Companys</li>
+        <li class="breadcrumb-item active">Create Company</li>
     @endcomponent
 
     <div class="container-fluid">
@@ -26,15 +26,17 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <form class="theme-form mega-form" action="{{ route('store.service') }}" method="post" enctype="multipart/form-data">
+                                <form class="theme-form mega-form" action="{{ route('store.company') }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
 
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Name</label>
-                                        <input class="form-control" type="text" name="name" placeholder="Enter Name Ar" />
+                                        <input class="form-control" type="text" name="name"
+                                            placeholder="Enter Name" />
                                         @error('name')
-                                            <span class=" text-danger">{{$message}}</span>
+                                            <span class=" text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
 

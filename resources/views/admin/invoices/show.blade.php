@@ -90,6 +90,23 @@
                                     value="{{ $invoice->payment_method->name_en }}" name="method" />
                             </div>
 
+
+
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleFormControlSelect9">Company</label>
+                                <select class="form-select digits" name="company_id" id="exampleFormControlSelect9">
+                                    <option value="">------</option>
+                                    @foreach ($companies as $company)
+                                        <option value="{{ $company->id }}"
+                                            {{ $company->id == $invoice->company_id ? 'selected' : '' }}>
+                                            {{ $company->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('company_id')
+                                    <span class=" text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
                         </form>
                     </div>
 

@@ -37,6 +37,8 @@ class PropertyController extends Controller
             'name' => $request->name,
             'address' => $request->address,
             'floors_count' => $request->floors_count,
+            'user_id' => auth()->user()->id,
+            'company_id' => $request->company_id,
 
         ]);
 
@@ -81,6 +83,8 @@ class PropertyController extends Controller
                 'name' => $request->name,
                 'address' => $request->address,
                 'floors_count' => $request->floors_count,
+                'user_id' => auth()->user()->id,
+                'company_id' => $request->company_id,
             ];
 
             $property->update($data);

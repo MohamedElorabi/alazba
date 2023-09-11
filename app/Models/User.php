@@ -26,6 +26,7 @@ class User extends Authenticatable
         'image',
         'status',
         'type',
+        'company_id'
     ];
 
     /**
@@ -74,10 +75,21 @@ class User extends Authenticatable
     }
 
 
+    public function property()
+    {
+        return $this->hasMany(Property::class);
+    }
 
 
     public function notification()
     {
         return $this->hasMany(Notification::class);
+    }
+
+
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 }

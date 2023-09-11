@@ -37,6 +37,7 @@
                                         <th>Date</th>
                                         <th>Expiry Date</th>
                                         <th>Payment Method</th>
+                                        <th>Company</th>
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
@@ -51,6 +52,7 @@
                                             <td>{{ $invoice->date }}</td>
                                             <td>{{ $invoice->expiry_date }}</td>
                                             <td>{{ $invoice->payment_method->name_en }}</td>
+                                            <td>{{ $invoice->company->name }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
                                                     <a href="{{ route('show.invoice', $invoice->id) }}"

@@ -51,6 +51,7 @@ class UserController extends Controller
             'image' => $imageName,
             'status' => $request->status,
             'type' => $request->type,
+            'company_id' => $request->company_id,
         ]);
 
 
@@ -97,6 +98,7 @@ class UserController extends Controller
                 'nationalty' => $request->nationalty,
                 'status' => $request->status,
                 'type' => $request->type,
+                'company_id' => $request->company_id,
             ];
 
 

@@ -115,6 +115,23 @@
                                             <span class=" text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
+
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="exampleFormControlSelect9">Company</label>
+                                        <select class="form-select digits" name="company_id" id="exampleFormControlSelect9">
+                                            <option value="">------</option>
+                                            @foreach ($companies as $company)
+                                                <option value="{{ $company->id }}">{{ $company->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('company_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                         <button class="btn btn-secondary">Cancel</button>

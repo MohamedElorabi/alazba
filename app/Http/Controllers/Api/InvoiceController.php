@@ -43,6 +43,7 @@ class InvoiceController extends Controller
         $invoice->date = $request->date;
         $invoice->expiry_date = $request->expiry_date;
         $invoice->payment_method_id = $request->payment_method_id;
+        $invoice->company_id = $request->company_id;
         $invoice->save();
 
         $itemIds = json_decode($request->object_id, true);

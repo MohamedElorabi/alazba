@@ -88,8 +88,25 @@
                                             <option value="inactive" @if ($item->stuts == 'inactive') selected @endif>
                                                 InActive</option>
                                         </select>
-
                                     </div>
+
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="exampleFormControlSelect9">Company</label>
+                                        <select class="form-select digits" name="company_id" id="exampleFormControlSelect9">
+                                            <option value="">------</option>
+                                            @foreach ($companies as $company)
+                                                <option value="{{ $company->id }}"
+                                                    {{ $company->id == $item->company_id ? 'selected' : '' }}>
+                                                    {{ $company->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('company_id')
+                                            <span class=" text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
                                 </form>
                             </div>
 

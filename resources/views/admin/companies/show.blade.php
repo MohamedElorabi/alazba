@@ -33,14 +33,19 @@
                                         <label class="col-form-label">Name</label>
                                         <input class="form-control" disabled type="text" name="name"
                                             value="{{ $company->name }}" placeholder="Enter Name" />
+                                    </div>
 
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Slug</label>
+                                        <input class="form-control" disabled type="text" name="name"
+                                            value="{{ $company->slug }}" placeholder="Enter Name" />
                                     </div>
 
 
                                     <div class="mb-3">
                                         <label class="col-form-label">Logo</label>
                                         <input class="form-control" disabled type="file" name="logo" />
-                                        <img src="{{ asset('storage/companies/' . $company->image) }}" width="150px"
+                                        <img src="{{ asset('storage/companies/' . $company->logo) }}" width="150px"
                                             class="image_thumbnail image-preview" alt="">
                                     </div>
 

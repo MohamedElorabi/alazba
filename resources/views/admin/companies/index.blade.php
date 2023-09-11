@@ -30,18 +30,19 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Log</th>
                                         <th>Slug</th>
+                                        <th>Logo</th>
 
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($compaines as $company)
+                                    @foreach ($companies as $company)
                                         <tr>
                                             <td>{{ $company->name }}</td>
+                                            <td>{{ $company->slug }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/compaines/' . $company->image) }}" width="150px"
+                                                <img src="{{ asset('storage/companies/' . $company->logo) }}" width="150px"
                                                     class="image_thumbnail image-preview" alt="">
                                             </td>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -25,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $companies = Company::all();
+        return view('admin.users.create', compact('companies'));
     }
 
     /**
@@ -51,6 +53,7 @@ class UserController extends Controller
             'image' => $imageName,
             'status' => $request->status,
             'type' => $request->type,
+            'company_id' => $request->company_id,
         ]);
         Session::flash('success','Created successfully!');
         return redirect(route('users'));
@@ -71,7 +74,8 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-        return view('admin.users.edit', compact('user'));
+        $company = Company::all();
+        return view('admin.users.edit', compact('user', 'company'));
     }
 
     /**
@@ -87,6 +91,7 @@ class UserController extends Controller
                 'nationalty' => $request->nationalty,
                 'status' => $request->status,
                 'type' => $request->type,
+                'company_id' => $request->company_id,
             ];
 
 

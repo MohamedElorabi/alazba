@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyRequest;
+use App\Models\Company;
 use App\Models\Property;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -24,7 +26,9 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view('admin.properties.create');
+        $users = User::all();
+        $companies = Company::all();
+        return view('admin.properties.create', compact('users', 'companies'));
     }
 
     /**
@@ -36,7 +40,8 @@ class PropertyController extends Controller
             'name' => $request->name,
             'address' => $request->address,
             'floors_count' => $request->floors_count,
-
+            'user_id' => $request->user_id,
+            'company_id' => $request->company_id,
         ]);
 
         Session::flash('success','Created successfully!');
@@ -59,7 +64,9 @@ class PropertyController extends Controller
     public function edit(string $id)
     {
         $property = Property::findOrFail($id);
-        return view('admin.properties.edit', compact('property'));
+        $users = User::all();
+        $companies = Company::all();
+        return view('admin.properties.edit', compact('property', 'users', 'companies'));
     }
 
     /**
@@ -72,6 +79,8 @@ class PropertyController extends Controller
             'name' => $request->name,
             'address' => $request->address,
             'floors_count' => $request->floors_count,
+            'user_id' => $request->user_id,
+            'company_id' => $request->company_id,
         ];
 
         $property->update($data);

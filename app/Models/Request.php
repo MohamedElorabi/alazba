@@ -16,7 +16,8 @@ class Request extends Model
         'service_id',
         'date',
         'status',
-        'amount'
+        'amount',
+        'company_id'
     ];
 
 
@@ -40,5 +41,13 @@ class Request extends Model
     public function invoice_items()
     {
         return $this->morphMany(InvoiceItem::class , 'object');
+    }
+
+
+
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 }

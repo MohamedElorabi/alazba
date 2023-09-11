@@ -34,6 +34,7 @@
                                         <th>Service</th>
                                         <th>Date</th>
                                         <th>Status</th>
+                                        <th>Company</th>
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
@@ -45,6 +46,7 @@
                                             <td>{{ $item->service->name_ar }}</td>
                                             <td>{{ $item->date }}</td>
                                             <td>{{ $item->status }}</td>
+                                            <td>{{ $item->company->name }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
                                                     <a href="{{ route('show.request', $item->id) }}"

@@ -32,6 +32,7 @@ class AuthController extends Controller
         'image' => $imageName,
         'status' => $request->status,
         'type' => $request->type,
+        'company_id' => $request->company_id,
         ]);
 
         return response()->json([

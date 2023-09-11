@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Invoice;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,7 +26,8 @@ class InvoiceController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('admin.invoices.create', compact('users'));
+        $companies = Company::all();
+        return view('admin.invoices.create', compact('users', 'companies'));
     }
 
     /**
@@ -42,6 +44,7 @@ class InvoiceController extends Controller
             'date' => $request->date,
             'expiry_date' => $request->expiry_date,
             'payment_method_id' => $request->payment_method_id,
+
         ];
         Invoice::create($data);
         Session::flash('success','Created successfully!');

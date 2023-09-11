@@ -46,7 +46,7 @@ class CompanyController extends Controller
 
         ]);
         Session::flash('success','Created successfully!');
-        return redirect(route('users'));
+        return redirect(route('companies'));
     }
 
     /**
@@ -64,12 +64,13 @@ class CompanyController extends Controller
     public function edit(string $id)
     {
         $company = Company::findOrFail($id);
-        return view('admin.compaines.edit', compact('company'));
+        return view('admin.companies.edit', compact('company'));
     }
 
     /**
      * Update the specified resource in storage.
      */
+    
     public function update(Request $request, string $id)
     {
         $company = Company::findOrFail($id);

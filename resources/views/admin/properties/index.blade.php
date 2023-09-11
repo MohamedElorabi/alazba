@@ -31,6 +31,8 @@
                                         <th>Name</th>
                                         <th>Address</th>
                                         <th>Floors Count</th>
+                                        <th>User</th>
+                                        <th>Company</th>
                                         <th width='250px'>Action</th>
                                     </tr>
                                 </thead>
@@ -40,6 +42,8 @@
                                             <td>{{ $property->name }}</td>
                                             <td>{{ $property->address }}</td>
                                             <td>{{ $property->floors_count }}</td>
+                                            <td>{{ $property->user->name }}</td>
+                                            <td>{{ $property->company->name }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3">
 

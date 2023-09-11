@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContractController;
 use App\Http\Controllers\Admin\FlatController;
 use App\Http\Controllers\Admin\InvoiceController;
@@ -154,3 +155,18 @@ Route::prefix('notifications')->group(function () {
 	Route::get('/', [NotificationController::class, 'index'])->name('notifications');
     Route::delete('/delete/{id}', [NotificationController::class, 'destroy'])->name('delete.notification');
 });
+
+
+
+
+// companies
+Route::prefix('companies')->group(function () {
+	Route::get('/', [CompanyController::class, 'index'])->name('companies');
+    Route::get('/create', [CompanyController::class, 'create'])->name('create.company');
+    Route::get('/show/{id}', [CompanyController::class, 'show'])->name('show.company');
+    Route::post('/store', [CompanyController::class, 'store'])->name('store.company');
+    Route::get('/edit/{id}', [CompanyController::class, 'edit'])->name('edit.company');
+    Route::post('/update/{id}', [CompanyController::class, 'update'])->name('update.company');
+    Route::delete('/delete/{id}', [CompanyController::class, 'destroy'])->name('delete.company');
+});
+

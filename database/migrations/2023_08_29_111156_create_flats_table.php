@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('flats', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->unsignedBigInteger('property_id');
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
             $table->integer('floor_number');
