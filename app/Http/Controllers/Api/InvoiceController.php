@@ -97,7 +97,47 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $invoice = Invoice::findOrFail($id);
+
+        $invoice->total = $request->total;
+        $invoice->paid = $request->paid;
+        $invoice->debit = $request->debit;
+        $invoice->status = $request->status;
+        $invoice->date = $request->date;
+        $invoice->expiry_date = $request->expiry_date;
+        $invoice->payment_method_id = $request->payment_method_id;
+        $invoice->company_id = $request->company_id;
+
+        $invoice->save();
+
+
+        $itemIds = json_decode($request->object_id, true);
+        $itemPrices = json_decode($request->price, true);
+        $types = json_decode($request->type, true);
+
+        for ($index = 0; $index < count($itemIds); $index++) {
+            if ($types[$index] == 'contract') {
+                $item = Contract::findOrFail($itemIds[$index]);
+            } else {
+                $item = ModelsRequest::findOrFail($itemIds[$index]);
+            }
+
+
+            $invoiceItem = InvoiceItem::where('invoice_id', $invoice->id)
+            ->where('type', $types[$index])
+            ->where('object_id', $itemIds[$index])
+            ->first();
+
+        if ($invoiceItem) {
+            $invoiceItem->price = $itemPrices[$index];
+            $invoiceItem->save();
+        }
+    }
+        return response()->json([
+            'status' => true,
+            'message' => 'Invoice Updated Successfully.',
+        ]);
     }
 
     /**

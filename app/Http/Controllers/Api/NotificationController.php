@@ -24,7 +24,6 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
-       // dd($request->all());
         $user = json_decode($request->user_id, true);;
         $itemIds = json_decode($request->object_id, true);
         $title_ar = json_decode($request->title_ar, true);
