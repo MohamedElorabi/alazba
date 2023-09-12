@@ -82,7 +82,45 @@ class PropertyDocumentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validate the request data
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'expiry_date' => 'date',
+            'file' => 'file|mimes:jpeg,png,pdf' // Add validation rules for the file
+            // Add validation rules for other fields here
+        ]);
+
+        // Find the property record you want to update
+        $property = PropertyDocument::findOrFail($id);
+
+        // Delete the old file if it exists
+        if ($property->file) {
+            Storage::delete('public/property_documents/' . $property->file);
+        }
+
+        // Store the new file if provided
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/property_documents', $file_name);
+            $imageName = $file_name;
+        } else {
+            $imageName = $property->file; // Keep the existing file name if no new file is provided
+        }
+
+        // Update the properties of the model
+        $property->name = $validatedData['name'];
+        $property->expiry_date = $validatedData['expiry_date'];
+        $property->file = $imageName;
+        // Update other fields here
+
+        // Save the changes to the database
+        $property->save();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Data Updated Successfully.',
+        ]);
     }
 
     /**
