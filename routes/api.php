@@ -6,8 +6,11 @@ use App\Http\Controllers\Api\ContractController;
 use App\Http\Controllers\Api\FlatController;
 use App\Http\Controllers\Api\InvoiceController;
 use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\PaymentMethodController;
 use App\Http\Controllers\Api\PropertyController;
+use App\Http\Controllers\Api\PropertyDocumentController;
 use App\Http\Controllers\Api\RequestController;
+use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,17 +39,20 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
-
-    // requests
-    Route::post('/request/store', [RequestController::class, 'store']);
-
-
     // properties
     Route::get('/properties', [PropertyController::class, 'index']);
     Route::get('/property/show/{id}', [PropertyController::class, 'show']);
     Route::post('/property/store', [PropertyController::class, 'store']);
     Route::post('/property/update/{id}', [PropertyController::class, 'update']);
     Route::delete('/property/delete/{id}', [PropertyController::class, 'destroy']);
+
+
+    // property documents
+    Route::get('/property_documents', [PropertyDocumentController::class, 'index']);
+    Route::get('/property_document/show/{id}', [PropertyDocumentController::class, 'show']);
+    Route::post('/property_document/store', [PropertyDocumentController::class, 'store']);
+    Route::post('/property_document/update/{id}', [PropertyDocumentController::class, 'update']);
+    Route::delete('/property_document/delete/{id}', [PropertyDocumentController::class, 'destroy']);
 
 
     // flats
@@ -87,6 +93,43 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/company/store', [CompanyController::class, 'store']);
     Route::post('/company/update/{id}', [CompanyController::class, 'update']);
     Route::delete('/company/delete/{id}', [CompanyController::class, 'destroy']);
+
+
+
+    // contracts
+    Route::get('/contracts', [ContractController::class, 'index']);
+    Route::get('/contract/show/{id}', [ContractController::class, 'show']);
+    Route::post('/contract/store', [ContractController::class, 'store']);
+    Route::post('/contract/update/{id}', [ContractController::class, 'update']);
+    Route::delete('/contract/delete/{id}', [ContractController::class, 'destroy']);
+
+
+
+
+    // requests
+    Route::get('/requests', [RequestController::class, 'index']);
+    Route::get('/request/show/{id}', [RequestController::class, 'show']);
+    Route::post('/request/store', [RequestController::class, 'store']);
+    Route::post('/request/update/{id}', [RequestController::class, 'update']);
+    Route::delete('/request/delete/{id}', [RequestController::class, 'destroy']);
+
+
+
+
+    // services
+    Route::get('/services', [ServiceController::class, 'index']);
+    Route::get('/service/show/{id}', [ServiceController::class, 'show']);
+    Route::post('/service/store', [ServiceController::class, 'store']);
+    Route::post('/service/update/{id}', [ServiceController::class, 'update']);
+    Route::delete('/service/delete/{id}', [ServiceController::class, 'destroy']);
+
+
+    // payment_methods
+    Route::get('/payment_methods', [PaymentMethodController::class, 'index']);
+    Route::get('/payment_method/show/{id}', [PaymentMethodController::class, 'show']);
+    Route::post('/payment_method/store', [PaymentMethodController::class, 'store']);
+    Route::post('/payment_method/update/{id}', [PaymentMethodController::class, 'update']);
+    Route::delete('/payment_method/delete/{id}', [PaymentMethodController::class, 'destroy']);
 
 });
 

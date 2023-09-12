@@ -16,7 +16,16 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        //
+        $notification = Notification::all();
+        if(count($notification) > 0 )
+        {
+            return response()->json([
+                'data' => $notification
+            ]);
+        }
+        return response()->json([
+            'message' => 'no record found'
+        ]);
     }
 
     /**

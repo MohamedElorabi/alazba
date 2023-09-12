@@ -44,6 +44,7 @@ class UserController extends Controller
         }
 
         $data = User::create([
+            'name' => $request->name,
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
             'passport_id' => $request->passport_id,
@@ -51,7 +52,7 @@ class UserController extends Controller
             'image' => $imageName,
             'status' => $request->status,
             'type' => $request->type,
-            'company_id' => $request->company_id,
+            'company_id' => auth()->user()->company->id,
         ]);
 
 
@@ -93,12 +94,13 @@ class UserController extends Controller
         {
 
             $data = [
+                'name' => $request->name,
                 'phone' => $request->phone,
                 'passport_id' => $request->passport_id,
                 'nationalty' => $request->nationalty,
                 'status' => $request->status,
                 'type' => $request->type,
-                'company_id' => $request->company_id,
+                'company_id' => auth()->user()->company->id,
             ];
 
 

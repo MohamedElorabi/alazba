@@ -38,7 +38,7 @@ class PropertyController extends Controller
             'address' => $request->address,
             'floors_count' => $request->floors_count,
             'user_id' => auth()->user()->id,
-            'company_id' => $request->company_id,
+            'company_id' => auth()->user()->company->id,
 
         ]);
 
@@ -84,7 +84,7 @@ class PropertyController extends Controller
                 'address' => $request->address,
                 'floors_count' => $request->floors_count,
                 'user_id' => auth()->user()->id,
-                'company_id' => $request->company_id,
+                'company_id' => auth()->user()->company->id,
             ];
 
             $property->update($data);
@@ -109,10 +109,19 @@ class PropertyController extends Controller
     public function destroy(string $id)
     {
         $property = Property::findOrFail($id);
-        $property->delete();
-        return response()->json([
-            'status' => true,
-            'message' => 'Data Deleted Successfully.',
-        ]);
+        if($property)
+        {
+            $property->delete();
+            return response()->json([
+                'status' => true,
+                'message' => 'Data Deleted Successfully.',
+            ]);
+
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'ID Not Found.',
+            ]);
+        }
     }
 }

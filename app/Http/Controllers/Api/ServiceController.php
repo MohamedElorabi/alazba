@@ -3,22 +3,22 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Request as ModelsRequest;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class RequestController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $requests = ModelsRequest::all();
-
-        if(count($requests) > 0 )
+        $services = Service::all();
+        if(count($services) > 0 )
         {
             return response()->json([
-                'data' => $requests
+                'data' => $services
             ]);
         }
         return response()->json([
@@ -31,19 +31,26 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        ModelsRequest::create([
-            'user_id' => auth()->user()->id,
-            'flat_id' => $request->flat_id,
-            'service_id' => $request->service_id,
-            'date' => $request->date,
-            'status' => $request->status,
-            'company_id' => auth()->user()->company->id,
+        if($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $file_name = rand() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/services',$file_name);
+            $imageName = $file_name;
+        }
+
+         Service::create([
+            'name_ar' => $request->name_ar,
+            'name_en' => $request->name_en,
+            'image' => $imageName,
         ]);
+
 
         return response()->json([
             'status' => true,
             'message' => 'Data Created Successfully.',
         ]);
+
     }
 
     /**
@@ -51,18 +58,18 @@ class RequestController extends Controller
      */
     public function show(string $id)
     {
-        $request = ModelsRequest::find($id);
-        if($request)
+        $service = Service::find($id);
+        if($service)
         {
             return response()->json([
                 'status' => true,
-                'data' => $request,
+                'data' => $service,
             ]);
 
-        } else {
+        }else {
             return response()->json([
                 'status' => false,
-                'message' => 'ID Not Found.',
+                'message' => 'no record found',
             ]);
         }
     }
@@ -72,19 +79,30 @@ class RequestController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = ModelsRequest::find($id);
-        if($item)
-        {
-            $data = [
-                'user_id' => auth()->user()->id,
-                'flat_id' => $request->flat_id,
-                'service_id' => $request->service_id,
-                'date' => $request->date,
-                'status' => $request->status,
-                'company_id' => auth()->user()->company->id,
-            ];
+        $service = Service::findOrFail($id);
+        if($service){
 
-            $item->update($data);
+            $data = [
+                'name_ar' => $request->name_ar,
+                'name_en' => $request->name_en,
+            ];
+    
+    
+            if($request->hasFile('image'))
+            {
+                $image = $request->file('image');
+                $file_name = rand() . '.' . $image->getClientOriginalExtension();
+                if($service->image)
+                {
+                    Storage::delete('public/services/' . $service->image);
+                }
+                $path = $image->storeAs('public/services',$file_name);
+    
+                $service['image'] = $file_name;
+    
+            }
+    
+            $service->update($request->except('image'));
 
             return response()->json([
                 'status' => true,
@@ -98,6 +116,7 @@ class RequestController extends Controller
                 'message' => 'ID Not Found.',
             ]);
         }
+       
     }
 
     /**
@@ -105,10 +124,10 @@ class RequestController extends Controller
      */
     public function destroy(string $id)
     {
-        $request = ModelsRequest::findOrFail($id);
-        if($request)
+        $service = Service::findOrFail($id);
+        if($service)
         {
-            $request->delete();
+            $service->delete();
             return response()->json([
                 'status' => true,
                 'message' => 'Data Deleted Successfully.',

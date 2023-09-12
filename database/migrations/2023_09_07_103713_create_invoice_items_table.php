@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
             $table->morphs('object');
             $table->double('price');
+            $table->string('type');
             $table->timestamps();
         });
     }

@@ -31,14 +31,14 @@ class ContractController extends Controller
     public function store(Request $request)
     {
         $data = Contract::create([
-            'user_id' => $request->user_id,
+            'user_id' => auth()->user()->id,
             'flat_id' => $request->flat_id,
             'property_id' => $request->property_id,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'status' => $request->status,
             'amount' => $request->amount,
-            'company_id' => $request->company_id,
+            'company_id' => auth()->user()->company->id,
         ]);
 
         return response()->json([
@@ -78,14 +78,14 @@ class ContractController extends Controller
         if($contract)
         {
             $data = [
-                'user_id' => $request->user_id,
+                'user_id' => auth()->user()->id,
                 'flat_id' => $request->flat_id,
                 'property_id' => $request->property_id,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
                 'status' => $request->status,
                 'amount' => $request->amount,
-                'company_id' => $request->company_id,
+                'company_id' => auth()->user()->company->id,
             ];
             $contract->update($data);
             return response()->json([
@@ -110,11 +110,18 @@ class ContractController extends Controller
     public function destroy(string $id)
     {
         $contract = Contract::findOrFail($id);
-        $contract->delete();
-        return response()->json([
-            'status' => true,
-            'message' => 'Data Deleted Successfully.',
-        ]);
+        if($contract) {
+            $contract->delete();
+            return response()->json([
+                'status' => true,
+                'message' => 'Data Deleted Successfully.',
+            ]);
+        } else {
+
+            return response()->json([
+                'message' => 'Id not found',
+            ], 404);
+        }
     }
 
 
