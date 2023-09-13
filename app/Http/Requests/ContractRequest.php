@@ -22,7 +22,6 @@ class ContractRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required',
             'flat_id' => 'required',
             'property_id' => 'required',
             'start_date' => 'required|date',

@@ -32,21 +32,24 @@ class PropertyDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->hasFile('file')) {
+        $name = json_decode($request->name);
+        $expiry_date = json_decode($request->expiry_date);
+        $property_id = json_decode($request->property_id);
 
-            foreach ($request->file('file') as $image) {
+        foreach ($name as $key => $value) {
+            $propertyDocument = new PropertyDocument();
+            $propertyDocument->name = $value;
+            $propertyDocument->expiry_date = $expiry_date[$key];
+            $propertyDocument->property_id = $property_id;
 
-                $file_name = rand() . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('public/property_documents',$file_name);
-                $imageName = $file_name;
-
-                PropertyDocument::create([
-                    'name' => $request->name,
-                    'file' =>  $imageName,
-                    'expiry_date' => $request->expiry_date,
-                    'property_id' => $request->property_id,
-                ]);
+            if ($request->hasFile('file.' . $key)) {
+                $file = $request->file('file.' . $key);
+                $fileName = time() . '.' . $file->getClientOriginalExtension();
+                $file->storeAs('public/property_documents',$fileName);
+                $propertyDocument->file = $fileName;
             }
+
+            $propertyDocument->save();
         }
 
         return response()->json([
@@ -80,47 +83,45 @@ class PropertyDocumentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        // Validate the request data
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'expiry_date' => 'date',
-            'file' => 'file|mimes:jpeg,png,pdf' // Add validation rules for the file
-            // Add validation rules for other fields here
-        ]);
 
-        // Find the property record you want to update
-        $property = PropertyDocument::findOrFail($id);
+        $propertyDocument = PropertyDocument::find($id);
 
-        // Delete the old file if it exists
-        if ($property->file) {
-            Storage::delete('public/property_documents/' . $property->file);
-        }
+        if($propertyDocument){
 
-        // Store the new file if provided
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $file_name = rand() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public/property_documents', $file_name);
-            $imageName = $file_name;
+            $data = [
+                'name' => $request->name,
+                'expiry_date' => $request->expiry_date,
+                'property_id' => $request->property_id,
+            ];
+
+            if($request->hasFile('file'))
+            {
+                $file = $request->file('file');
+                $file_name = rand() . '.' . $file->getClientOriginalExtension();
+                if($propertyDocument->file)
+                {
+                    Storage::delete('public/property_documents/' . $propertyDocument->file);
+                }
+                $path = $file->storeAs('public/property_documents',$file_name);
+
+                $propertyDocument['file'] = $file_name;
+
+            }
+
+
+            $propertyDocument->update($request->except('file'));
+            return response()->json([
+                'status' => true,
+                'message' => 'Data Updated Successfully.',
+            ]);
+
         } else {
-            $imageName = $property->file; // Keep the existing file name if no new file is provided
+            return response()->json([
+                'message' => 'Id Not Found',
+            ]);
         }
-
-        // Update the properties of the model
-        $property->name = $validatedData['name'];
-        $property->expiry_date = $validatedData['expiry_date'];
-        $property->file = $imageName;
-        // Update other fields here
-
-        // Save the changes to the database
-        $property->save();
-
-        return response()->json([
-            'status' => true,
-            'message' => 'Data Updated Successfully.',
-        ]);
     }
 
     /**

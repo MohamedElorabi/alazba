@@ -11,7 +11,7 @@ class UserDocumentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UserDocumentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string',
+            'type' => 'required',
+            'expiry_date' => 'required|date',
+            'file' => 'nullable',
+            'property_id' => 'required'
         ];
     }
 }

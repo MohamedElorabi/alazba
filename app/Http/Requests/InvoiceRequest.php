@@ -11,7 +11,7 @@ class InvoiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class InvoiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'total' => 'required',
+            'paid' => 'required',
+            'debit' => 'required',
+            'status' => 'required',
+            'date' => 'required|date',
+            'expiry_date' => 'required|date',
+            'payment_method_id' => 'required',
+            'object_id'  => 'required',
+            'price'  => 'required',
+            'type'  => 'required',
         ];
     }
 }

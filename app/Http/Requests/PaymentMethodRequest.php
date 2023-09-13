@@ -11,7 +11,7 @@ class PaymentMethodRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class PaymentMethodRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name_ar' => 'required|string',
+            'name_en' => 'required|string',
+            'image' => 'required|image',
+            'available' => 'required'
         ];
     }
 }

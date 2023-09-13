@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InvoiceRequest;
 use App\Models\Contract;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
@@ -31,7 +32,7 @@ class InvoiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(InvoiceRequest $request)
     {
         // dd($request->all());
         $invoice = new Invoice();
@@ -95,7 +96,7 @@ class InvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(InvoiceRequest $request, string $id)
     {
 
         $invoice = Invoice::findOrFail($id);

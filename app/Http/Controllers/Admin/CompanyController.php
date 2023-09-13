@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -30,7 +31,7 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
         if($request->hasFile('logo'))
         {
@@ -70,8 +71,8 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    
-    public function update(Request $request, string $id)
+
+    public function update(CompanyRequest $request, string $id)
     {
         $company = Company::findOrFail($id);
         $data = [

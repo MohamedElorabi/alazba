@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContractRequest;
 use App\Models\Contract;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class ContractController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContractRequest $request)
     {
         $data = Contract::create([
             'user_id' => auth()->user()->id,
@@ -72,7 +73,7 @@ class ContractController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ContractRequest $request, string $id)
     {
         $contract = Contract::findOrFail($id);
         if($contract)

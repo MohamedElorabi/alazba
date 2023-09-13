@@ -57,9 +57,6 @@
                                                 <div class="d-flex align-items-center gap-3">
                                                     <a href="{{ route('show.invoice', $invoice->id) }}"
                                                         class="btn btn-success"><i class="fa fa-eye"></i> Show</a>
-
-                                                    <a href="{{ route('edit.invoice', $invoice->id) }}"
-                                                        class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
                                                     <form method="post"
                                                         action="{{ route('delete.invoice', $invoice->id) }}">
                                                         @csrf

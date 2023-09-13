@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaymentMethodRequest;
 use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +31,7 @@ class PaymentMethodController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PaymentMethodRequest $request)
     {
         if($request->hasFile('image'))
         {
@@ -64,7 +65,7 @@ class PaymentMethodController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PaymentMethodRequest $request, string $id)
     {
         $payment_method = PaymentMethod::find($id);
         if($payment_method)
@@ -75,8 +76,8 @@ class PaymentMethodController extends Controller
                 'name_en' => $request->name_en,
                 'available' => $request->available,
             ];
-    
-    
+
+
             if($request->hasFile('image'))
             {
                 $image = $request->file('image');
@@ -86,11 +87,11 @@ class PaymentMethodController extends Controller
                     Storage::delete('public/payment_methods/' . $payment_method->image);
                 }
                 $path = $image->storeAs('public/payment_methods',$file_name);
-    
+
                 $payment_method['image'] = $file_name;
-    
+
             }
-    
+
             $payment_method->update($request->except('image'));
 
             return response()->json([
@@ -104,7 +105,7 @@ class PaymentMethodController extends Controller
                 'message' => 'Id not found',
             ], 404);
         }
-    
+
     }
 
     /**

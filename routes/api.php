@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\PropertyDocumentController;
 use App\Http\Controllers\Api\RequestController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\UserDocumentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,9 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::post('logout', [AuthController::class , 'logout']);
+
 
     // properties
     Route::get('/properties', [PropertyController::class, 'index']);
@@ -73,6 +77,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user_contracts', [UserController::class, 'user_contracts']);
     Route::get('/user_requests', [UserController::class, 'user_requests']);
     Route::get('/user_documents', [UserController::class, 'user_documents']);
+
+
+    // user documents
+    Route::get('/user_documents', [UserDocumentController::class, 'index']);
+    Route::get('/user_document/show/{id}', [UserDocumentController::class, 'show']);
+    Route::post('/user_document/store', [UserDocumentController::class, 'store']);
+    Route::post('/user_document/update/{id}', [UserDocumentController::class, 'update']);
+    Route::delete('/user_document/delete/{id}', [UserDocumentController::class, 'destroy']);
+
+
 
 
     // invoices

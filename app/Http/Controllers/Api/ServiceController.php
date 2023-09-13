@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,7 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
         if($request->hasFile('image'))
         {
@@ -77,7 +78,7 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ServiceRequest $request, string $id)
     {
         $service = Service::findOrFail($id);
         if($service){
@@ -86,8 +87,8 @@ class ServiceController extends Controller
                 'name_ar' => $request->name_ar,
                 'name_en' => $request->name_en,
             ];
-    
-    
+
+
             if($request->hasFile('image'))
             {
                 $image = $request->file('image');
@@ -97,11 +98,11 @@ class ServiceController extends Controller
                     Storage::delete('public/services/' . $service->image);
                 }
                 $path = $image->storeAs('public/services',$file_name);
-    
+
                 $service['image'] = $file_name;
-    
+
             }
-    
+
             $service->update($request->except('image'));
 
             return response()->json([
@@ -116,7 +117,7 @@ class ServiceController extends Controller
                 'message' => 'ID Not Found.',
             ]);
         }
-       
+
     }
 
     /**

@@ -65,4 +65,20 @@ class AuthController extends Controller
             ], 200);
 
     }
+
+
+
+    public function logout(Request $request)
+    {
+            $user = Auth::user();
+            if ($user) {
+                PersonalAccessToken::where('tokenable_id', $user->id)
+                    ->where('tokenable_type', get_class($user))
+                    ->where('name', 'API TOKEN')
+                    ->delete();
+                return response()->json(['message' => 'logged out successfully']);
+            } else {
+                return response()->json(['message' => 'not authenticated'], 401);
+            }
+    }
 }

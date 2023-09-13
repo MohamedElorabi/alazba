@@ -88,9 +88,9 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, string $id)
     {
-        $country = User::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        if($country)
+        if($user)
         {
 
             $data = [
@@ -108,17 +108,17 @@ class UserController extends Controller
             {
                 $image = $request->file('image');
                 $file_name = rand() . '.' . $image->getClientOriginalExtension();
-                if($country->image)
+                if($user->image)
                 {
-                    Storage::delete('public/users/' . $country->image);
+                    Storage::delete('public/users/' . $user->image);
                 }
                 $path = $image->storeAs('public/users',$file_name);
 
-                $country['image'] = $file_name;
+                $user['image'] = $file_name;
 
             }
 
-            $country->update($request->except('image'));
+            $user->update($request->except('image'));
             return response()->json([
                 'status' => true,
                 'message' => 'Data Updated Successfully.',

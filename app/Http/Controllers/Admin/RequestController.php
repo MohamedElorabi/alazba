@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RequestRequest;
 use App\Models\Flat;
 use App\Models\Request as ModelsRequest;
 use App\Models\Service;
@@ -35,7 +36,7 @@ class RequestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RequestRequest $request)
     {
         ModelsRequest::create([
             'user_id' => $request->user_id,
@@ -78,7 +79,7 @@ class RequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(RequestRequest $request, string $id)
     {
         $item = ModelsRequest::find($id);
         $data = [
